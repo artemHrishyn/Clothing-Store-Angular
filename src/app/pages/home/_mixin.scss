@@ -1,0 +1,14 @@
+@mixin gridTemplateGlobalInfo() {
+  @media only screen and (min-width: 1250px) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10rem;
+  }
+
+  @media only screen and (max-width: 1250px) {
+    grid-gap: 1rem;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+}

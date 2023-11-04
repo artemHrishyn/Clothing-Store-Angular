@@ -1,0 +1,42 @@
+<div class="shopping">
+  <h1>Мої замовлення</h1>
+
+  <div class="shopping__empty" *ngIf="isEmpty">
+    <h2>Список замовлень пустий</h2>
+    <img src="assets/image/emptyBuy.jpg" alt="shop" />
+    <p>Ви ще нічого не замовляли</p>
+    <button (click)="goToUrl('')">Перейти на головну</button>
+  </div>
+
+  <div class="shopping__info" *ngIf="!isEmpty">
+    <div>
+      <ul>
+        <li *ngFor="let item of boughtProducts">
+          <app-buy
+            #buyComponent
+            [itemProduct]="item"
+            (onDelete)="Delate($event)"
+            (onCounter)="onCounterReceived($event)"
+          ></app-buy>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <div class="shopping__info__item">
+        <h2>Разом:</h2>
+        <p>
+          5 товарів на суму <span>{{ totalSum }} UAH</span>
+        </p>
+        <p>Вартість доставки за тарифами перевізника</p>
+
+        <div>
+          <p>
+            До сплати <span>{{ totalSum }} UAH</span>
+          </p>
+        </div>
+
+        <button>оформити замовлення</button>
+      </div>
+    </div>
+  </div>
+</div>

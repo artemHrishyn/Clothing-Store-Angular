@@ -1,0 +1,101 @@
+@import 'src/styles.scss';
+
+
+.shopping {
+  padding: 2rem 3rem;
+  background-color: #f7f7f7;
+
+  h1 {
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+}
+
+.shopping__empty {
+  h2 {
+    margin-bottom: 3rem;
+    color: $colorBlack;
+    font-size: 2rem;
+  }
+
+  img {
+    max-width: 35rem;
+  }
+
+  p {
+    margin: 1.3rem 0;
+    color: $colorBlack;
+    font-size: 1.2rem;
+  }
+
+  button {
+    border: none;
+    border-radius: 2rem;
+    padding: 5px 30px;
+    background-color: $colorWhite;
+    color: $colorBlack;
+  }
+
+  button:hover {
+    background-color: $colorBlack;
+    color: $colorWhite;
+  }
+}
+
+.shopping__info {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-column-gap: 36px;
+
+  >div {
+    border: 2px solid darkblue;
+    border-radius: 2rem;
+    padding: 2rem;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    height: 360px;
+    overflow: auto;
+
+    li {
+      margin-bottom: 2.6rem;
+    }
+  }
+}
+
+
+.shopping__info__item {
+  h2 {
+    font-size: 1.8rem;
+    color: $colorBlack;
+    text-transform: capitalize;
+  }
+
+  button {
+    border-radius: 2rem;
+    padding: 5px 30px;
+    background-color: $colorWhite;
+    color: $colorBlack;
+    text-transform: capitalize;
+  }
+
+  button:hover {
+    background-color: $colorBlack;
+    color: $colorWhite;
+  }
+}
+
+
+app-buy {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  grid-gap: 20px;
+  border: 1px solid $colorBlack;
+  border-radius: 30px;
+  box-shadow: 6px 12px 12px 4px rgba(186, 184, 184, 0.49);
+  overflow: hidden;
+  position: relative;
+}

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "online-clothing-store-34e45": {
+      "hosting": {
+        "Clothing-Store-Angular": [
+          "online-clothing-store-34e45"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "online-clothing-store-34e45"
+  }
+}

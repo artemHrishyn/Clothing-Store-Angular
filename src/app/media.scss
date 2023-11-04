@@ -1,0 +1,208 @@
+@media only screen and (min-width: 1440px) {
+  header {
+    padding-top: 1rem;
+  }
+
+  .mini-menu {
+    display: none;
+  }
+
+  .menu {
+    display: flex;
+  }
+
+  .menu-2 {
+    display: none;
+  }
+
+  footer {
+    padding: 2.5rem 0;
+
+    .content {
+      grid-template-columns: 1fr 4fr;
+      grid-gap: 1.56rem;
+      max-width: 94rem;
+      width: 100%;
+
+      >ul {
+        max-width: 72rem;
+      }
+    }
+
+    h1 {
+      font-size: 2.19rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: .94rem;
+    }
+
+    li {
+      font-size: 1.3rem;
+    }
+
+    .social__info {
+      li {
+        max-width: 2rem;
+        height: 2rem;
+
+        margin-right: 0.5rem;
+      }
+    }
+
+    a {
+      font-size: 1.3rem;
+
+      img {
+        max-width: 1.56rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+
+
+  footer {
+    h1 {
+      font-size: 1.9rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+    }
+
+    >ul {
+      max-width: 60rem;
+    }
+
+
+    li {
+      font-size: .8rem;
+    }
+
+    a {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .mini-menu {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .menu-2 {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  footer {
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1rem;
+    }
+
+    .social__info {
+      li {
+        max-width: 1.8rem;
+        height: 1.8rem;
+      }
+    }
+
+    a {
+      font-size: .8rem;
+
+      img {
+        max-width: 1.2rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  header {
+    padding: 0rem;
+  }
+
+  footer {
+    padding: 2.5rem;
+
+    .content {
+      justify-items: start;
+    }
+
+    li {
+      justify-self: start;
+    }
+  }
+}
+
+@media only screen and (max-width: 690px) {}
+
+@media only screen and (max-width: 500px) {
+  footer {
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-size: .9rem;
+      margin-bottom: 0.3rem;
+    }
+
+    li {
+      font-size: 0.6rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 425px) {
+
+  footer {
+    padding: 1.5rem;
+
+    h1 {
+      font-size: 1rem;
+    }
+
+    h2 {
+      margin-bottom: 0;
+    }
+
+    .social__info {
+
+      li {
+        max-width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+
+    a {
+      font-size: 0.6rem;
+
+      img {
+        max-width: 0.9rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  footer {
+    .content {
+      grid-template-columns: 1fr;
+      justify-items: start;
+    }
+  }
+}
+
+@media only screen and (max-width: 320px) {}

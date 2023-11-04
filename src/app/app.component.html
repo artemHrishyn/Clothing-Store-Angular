@@ -1,0 +1,139 @@
+<header>
+  <nav>
+    <div class="title">
+      <img
+        src="assets/image/icon/menu.svg"
+        alt="menu"
+        class="mini-menu"
+        (click)="showMiniMenu()"
+      />
+      <h1>Shop.co</h1>
+    </div>
+    <ul class="menu">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" [routerLink]="'/'"
+          >Главное</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          aria-current="page"
+          [routerLink]="'catalog-products'"
+          >Каталог</a
+        >
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" [routerLink]="'contacts'"
+          >Контакти</a
+        >
+      </li>
+    </ul>
+    <div class="personal">
+      <img
+        src="assets/image/icon/shop.svg"
+        alt="shop"
+        (click)="goToUrl('shopping-list')"
+      />
+      <img src="assets/image/icon/user.svg" alt="user" (click)="loginShow()" />
+    </div>
+  </nav>
+
+  <ul class="menu-2" *ngIf="isShowMenu">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" [routerLink]="'/'"
+        >Главное</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" class="nav-link active"
+        >Каталог</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" [routerLink]="'contacts'"
+        >Контакти</a
+      >
+    </li>
+  </ul>
+
+  <div class="form" *ngIf="isLogin">
+    <form action="" method="get">
+      <h3 (click)="loginShow()">X</h3>
+      <h1>Welcome</h1>
+      <div>
+        <p>Login:</p>
+        <input type="text" placeholder="Login" />
+      </div>
+      <div>
+        <p>Email:</p>
+        <input type="email" placeholder="E-mail" />
+      </div>
+      <button type="submit" (click)="goToUrl('personal-area')">Вход</button>
+    </form>
+  </div>
+</header>
+<router-outlet></router-outlet>
+<footer>
+  <div class="content">
+    <h1>Shop.co</h1>
+    <ul>
+      <li>
+        <h2>Інформація</h2>
+        <ul>
+          <li *ngFor="let item of list.info">{{ item }}</li>
+        </ul>
+      </li>
+      <li>
+        <h2>Допомога</h2>
+        <ul>
+          <li *ngFor="let item of list.help">{{ item }}</li>
+        </ul>
+      </li>
+      <li>
+        <ul class="social">
+          <li><h2>social media</h2></li>
+          <li>
+            <ul class="social__info">
+              <li>
+                <img
+                  src="https://img.icons8.com/papercut/60/twitter.png"
+                  alt="twitter"
+                />
+              </li>
+              <li>
+                <img
+                  src="https://img.icons8.com/arcade/128/facebook-new.png"
+                  alt="facebook-new"
+                />
+              </li>
+              <li>
+                <img
+                  src="https://img.icons8.com/3d-fluency/94/youtube-play.png"
+                  alt="youtube-play"
+                />
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="tel:+380936470424">
+              <img
+                src="https://img.icons8.com/fluency/48/phone--v1.png"
+                alt="phone--v1"
+              />+38(093)647-04-24</a
+            >
+          </li>
+          <li>
+            <a href="mailto:genser.artem@gmail.com">
+              <img
+                src="https://img.icons8.com/dusk/64/filled-message.png"
+                alt="filled-message"
+              />
+              genser.artem@gmail.com</a
+            >
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</footer>

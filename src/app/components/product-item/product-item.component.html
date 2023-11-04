@@ -1,0 +1,24 @@
+<div class="img-container" (click)="openProduct()">
+  <img src="{{ image }}" alt="product item" />
+</div>
+
+<div class="info">
+  <h1>
+    {{ title }}
+  </h1>
+  <p>
+    Рейтинг:
+    <span class="rating">
+      {{ createStar(rating) }}
+    </span>
+  </p>
+  <div class="coins">
+    <div>
+      <p class="sale">{{ logItemSale(sale) }}</p>
+      <p [ngClass]="{ price: isPrice }">{{ price }}UAH</p>
+    </div>
+    <button>
+      <span class="buy" (click)="buyProduct()">купить</span>
+    </button>
+  </div>
+</div>

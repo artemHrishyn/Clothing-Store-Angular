@@ -8,14 +8,15 @@ import { IProductBuy } from 'src/app/service/interface';
 export class BuyComponent implements OnInit {
 
   @Input() itemProduct: IProductBuy = {} as IProductBuy;
-  @Output() onDelete: EventEmitter< IProductBuy > = new EventEmitter< IProductBuy >();
-  @Output() onCounter: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onDelete: EventEmitter<IProductBuy> = new EventEmitter<IProductBuy>();
+  @Output() onCounter: EventEmitter<{ title: string, value: number }> = new EventEmitter<{ title: string, value: number }>();
 
   public sumItem: number = 0;
 
   public title: string = "";
   public image: string = "";
   public price: number = 0;
+  public sale: number = 0;
   public counter: number = 0;
   public close: boolean = false;
 
@@ -23,40 +24,37 @@ export class BuyComponent implements OnInit {
 
 
   ngOnInit() {
-    const { title, image, price, counter } = this.itemProduct;
+    const { title, image, price, sale, counter } = this.itemProduct;
     this.title = title;
     this.image = image;
+    this.price = price;
+    this.sale = sale;
     this.counter = counter;
-    console.log(this.price);
-
     this.sumItem = this.price * this.counter;
-
-    setTimeout(() => this.setCounter(this.sumItem), 1);
+    setTimeout(() => this.setCounter(this.title ,this.sumItem), 1);
   }
 
   public productCounter(value: string) {
     switch (value) {
       case "minus":
         (this.counter > 0) ? this.counter-- : 0;
-        this.sumItem = this.price * this.counter;
-        this.setCounter(this.sumItem);
-        break;
+      break;
 
       case "plus":
         this.counter++;
-        this.sumItem = this.price * this.counter;
-        this.setCounter(this.sumItem);
-        break;
+      break;
 
       default:
         this.counter = 0;
-        break;
+      break;
     }
+    this.sumItem = 0;
+    this.sumItem = this.price * this.counter;
+    this.setCounter(this.title ,this.sumItem);
   }
 
-  public setCounter(value: number): number {
-    this.onCounter.emit(value);
-    return value;
+  public setCounter(title: string, value: number): void {
+    this.onCounter.emit({ title: title, value: value });
   }
 
   Delate(): IProductBuy  {

@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
-import { ProcessingDataService } from './service/processing-data/processing-data.service';
 import { Router } from '@angular/router';
-enum SiteCategory {
-  clothes = "clothes",
-  reviews = "reviews"
-};
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: [
+    './app.component.scss',
+    './header.component.scss',
+    './media.scss',
+  ]
 })
 export class AppComponent {
   constructor(
     private routing: Router,
-    private processingDataService: ProcessingDataService
   ) {}
 
   public isShowMenu: boolean = false;

@@ -18,6 +18,8 @@ import { CatalogProductsComponent } from './pages/catalog-products/catalog-produ
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductService } from './service/product/product.service';
 import { BuyComponent } from './components/buy/buy.component';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { BuyComponent } from './components/buy/buy.component';
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp({"projectId":"online-clothing-store-34e45","appId":"1:980902698741:web:5c0088fb542be270442fbc","databaseURL":"https://online-clothing-store-34e45-default-rtdb.europe-west1.firebasedatabase.app","storageBucket":"online-clothing-store-34e45.appspot.com","apiKey":"AIzaSyA6z52TNDyl9Ry5STozAqQ2D2wmu1vBxpQ","authDomain":"online-clothing-store-34e45.firebaseapp.com","messagingSenderId":"980902698741","measurementId":"G-NMG8ZNYM6M"})),
     provideFirestore(() => getFirestore()),
-    provideDatabase(() => getDatabase())
+    provideDatabase(() => getDatabase()),
+    provideAuth(() => getAuth()),
+    provideAnalytics(() => getAnalytics())
   ],
   exports: [
     BuyComponent
@@ -48,7 +52,9 @@ import { BuyComponent } from './components/buy/buy.component';
     ProcessingDataService,
     MixElementsPipe,
     ProductService,
-    BuyComponent
+    BuyComponent,
+    ScreenTrackingService,
+    UserTrackingService
   ],
   bootstrap: [AppComponent]
 })

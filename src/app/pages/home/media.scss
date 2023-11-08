@@ -1,51 +1,103 @@
+@media only screen and (min-width: 2500px) {
+  .selling{
+    h1{
+      margin: 48px 0;
+      font-size: 70px;
+    }
+
+    button{
+      margin-top: 30px;
+      font-size: 30px;
+      .buy {
+        padding: 15px;
+      }
+    }
+  }
+}
+
 @media only screen and (min-width: 1750px) {
   .global-info {
-    padding: 3rem 10rem;
+    padding: 48px 160px;
 
     h1 {
-      font-size: 3rem;
-      line-height: 3rem;
+      font-size: 48px;
+      line-height: 48px;
     }
 
     p {
-      margin: 2rem 0;
-      font-size: 2rem;
-      line-height: 2rem;
+      margin: 32px 0;
+      font-size: 32px;
+      line-height: 32px;
     }
 
     a {
       margin: 15px 0px;
       padding: 10px 15px;
-      font-size: 2rem;
+      font-size: 32px;
     }
 
     ul {
-      margin-top: 2rem;
+      margin-top: 32px;
 
       li {
-        margin-right: 3rem;
+        margin-right: 48px;
 
         h3 {
-          font-size: 3rem;
+          font-size: 48px;
         }
 
         p {
-          font-size: 2rem;
-          line-height: 2rem;
+          font-size: 32px;
+          line-height: 32px;
         }
       }
     }
 
     img {
-      max-width: 40rem;
+      max-width: 640px;
     }
   }
 
   .brand {
-    padding: 1rem 3rem;
+    padding: 16px 48px;
 
     li {
-      max-width: 10rem;
+      max-width: 160px;
+    }
+  }
+  .selling {
+    h1 {
+      margin: 48px 0;
+      font-size: 70px;
+    }
+    button {
+      margin-top: 30px;
+      font-size: 20px;
+
+      .buy{
+        padding: 10px;
+      }
+    }
+  }
+
+  .info__list {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+  }
+
+  .service__img {
+    max-width: 82px;
+    border-radius: 35px 0px;
+    padding: 11px;
+  }
+
+  .service__text {
+    font-size: 24px;
+  }
+
+  .service {
+    ul {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 }
@@ -93,9 +145,42 @@
       max-width: 27rem;
     }
   }
-}
+  .selling {
+    h1{
+      margin: 40px 0;
+      font-size: 70px;
+    }
+    button {
+      margin-top: 30px;
+      font-size: 20px;
 
-@media only screen and (max-width: 1440px) {}
+      .buy {
+        padding: 10px;
+      }
+    }
+  }
+
+  .service__img {
+    max-width: 60px;
+    border-radius: 20px 0px;
+    padding: 11px;
+  }
+
+  .service__text {
+    font-size: 24px;
+  }
+
+  .service {
+    ul{
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .info__list {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+  }
+}
 
 @media only screen and (max-width: 1250px) {
   .global-info {
@@ -148,10 +233,42 @@
       max-width: 7rem;
     }
   }
+
+  .info__list {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
 }
 
-@media only screen and (max-width: 1024px) {}
+@media only screen and (max-width: 1024px) {
+  .selling {
+    h1{
+      margin: 30px 0;
+      font-size: 50px;
+    }
+    button {
+      margin-top: 30px;
+      font-size: 20px;
 
+      .buy {
+        padding: 10px;
+      }
+    }
+  }
+
+  .service{
+    padding: 0 30px;
+  }
+
+  .service__img{
+    max-width: 60px;
+    border-radius: 20px 0px;
+  }
+
+  .service__text{
+    font-size: 16px;
+  }
+}
 @media only screen and (max-width: 768px) {
   .global-info {
     ul {
@@ -171,6 +288,32 @@
     li {
       max-width: 5rem;
     }
+  }
+
+  .selling {
+    h1 {
+      margin: 10px 0;
+      font-size: 30px;
+    }
+  }
+
+  .service__img {
+    max-width: 40px;
+    padding: 6px;
+  }
+
+  .service__text {
+    font-size: 12px;
+  }
+
+  h1{
+    margin: 10px 0;
+    font-size: 30px;
+  }
+
+  .info__list {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
   }
 }
 
@@ -228,8 +371,8 @@
 
   .global-info {
     h1 {
-      font-size: 1.5rem;
-      line-height: 1.5rem;
+      font-size: 24px;
+      line-height: 24px;
     }
 
     p {
@@ -237,15 +380,24 @@
     }
 
     ul {
-      margin-top: 0.5rem;
+      margin-top: 8px;
     }
 
     img {
       max-width: 15rem;
     }
   }
+
+  .service {
+    ul{
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, auto);
+      grid-row-gap: 5px;
+    }
+  }
+
+  .info__list {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
 }
-
-@media only screen and (max-width: 375px) {}
-
-@media only screen and (max-width: 320px) {}

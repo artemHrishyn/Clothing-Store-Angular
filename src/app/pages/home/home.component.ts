@@ -5,7 +5,10 @@ import { ProcessingDataService } from 'src/app/service/processing-data/processin
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: [
+    './home.component.scss',
+    './media.scss'
+  ]
 })
 export class HomeComponent {
 

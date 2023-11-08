@@ -1,6 +1,12 @@
-@import 'src/styles.scss';
 @import '_mixin.scss';
-// @import 'media.scss';
+// color
+$colorBlack: #000;
+$colorWhite: #fff;
+
+// // font
+$fontFamilyIntegral: Integral CF sans-serif;
+$fontFamilySatoshi: Satoshi sans-serif;
+$fontFamilyInter: Inter sans-serif;
 
 .global-info {
   display: grid;
@@ -65,7 +71,7 @@
   li {
     display: flex;
     background-color: $colorWhite;
-    padding: .4rem;
+    padding: .64px;
     width: 100%;
 
     img {
@@ -80,24 +86,21 @@
   align-items: center;
 
   h1 {
-    margin: 3rem 0;
     color: #444;
     text-shadow: 1px 0px 1px #CCC, 0px 1px 1px #EEE, 2px 1px 1px #CCC, 1px 2px 1px #EEE, 3px 2px 1px #CCC, 2px 3px 1px #EEE, 4px 3px 1px #CCC, 3px 4px 1px #EEE, 5px 4px 1px #CCC, 4px 5px 1px #EEE, 6px 5px 1px #CCC, 5px 6px 1px #EEE, 7px 6px 1px #CCC;
     font-family: $fontFamilyIntegral;
-    font-size: 3rem;
     font-weight: 700;
     text-transform: uppercase;
   }
 
   .info__list {
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
 
     li {
       max-width: 250px;
       width: 100%;
-      margin: 1.5rem;
+      margin: 24px;
       box-shadow: 6px 12px 12px 4px #bab8b87d;
 
       app-products {
@@ -110,13 +113,13 @@
   }
 
   a {
-    margin-top: 2rem;
+    margin-top: 32px;
     border: 2px solid hsl(0, 0%, 50%);
-    border-radius: 2rem;
-    padding: 0.5rem 1rem;
+    border-radius: 32px;
+    padding: 8px 16px;
     color: $colorBlack;
     font-family: $fontFamilySatoshi;
-    font-size: 1.5rem;
+    font-size: 24px;
     font-weight: 500;
     text-transform: capitalize;
     text-decoration: none;
@@ -129,25 +132,11 @@
   }
 
   button {
-    margin-top: 1rem;
     border: none;
     background-color: inherit;
-    font-size: 1.2rem;
     line-height: 1;
     color: currentColor;
     position: relative;
-
-    .buy {
-      background-color: $colorWhite;
-      display: inherit;
-      padding: 0.5em;
-      border: 2px solid currentColor;
-      border-radius: 2em;
-      position: relative;
-      z-index: 1;
-      transform: translate(-.4rem, -.4rem);
-      transition: .2s ease-in-out;
-    }
 
     &::after {
       content: "";
@@ -180,6 +169,16 @@
   }
 }
 
+.buy {
+  background-color: $colorWhite;
+  display: inherit;
+  border: 2px solid currentColor;
+  border-radius: 32px;
+  position: relative;
+  z-index: 1;
+  transform: translate(-6px, -6px);
+  transition: .2s ease-in-out;
+}
 .reviews {
   background-image: url("/assets/image/bg-reviews.jpg");
   margin: 4rem;
@@ -198,33 +197,29 @@
   display: flex;
 
   ul {
-    margin: 3.43rem auto;
-    display: flex;
+    margin: 56px auto;
+    display: grid;
     list-style: none;
-    align-items: center;
+    // align-items: center;
 
     li {
       display: flex;
       justify-content: space-between;
-      max-width: 30rem;
+      max-width: 480px;
       width: 100%;
       align-items: center;
+    }
 
-      div {
-        max-width: 5rem;
-        width: 100%;
-        border-radius: 2.19rem 0px;
-        background-color: $colorBlack;
-        padding: .69rem;
-      }
+    .service__img {
+      width: 100%;
+      background-color: $colorBlack;
+    }
 
-      p {
-        color: $colorBlack;
-        font-family: $fontFamilyIntegral;
-        font-size: 1.5rem;
-        font-weight: 400;
-        margin: 0 1.25rem;
-      }
+    .service__text {
+      color: $colorBlack;
+      font-family: $fontFamilyIntegral;
+      font-weight: 400;
+      margin: 0 12px;
     }
   }
 }

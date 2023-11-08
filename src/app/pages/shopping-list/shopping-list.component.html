@@ -11,7 +11,7 @@
   <div class="shopping__info" *ngIf="!isEmpty">
     <div>
       <ul>
-        <li *ngFor="let item of boughtProducts">
+        <li class="shopping__info__item" *ngFor="let item of boughtProductsNew">
           <app-buy
             #buyComponent
             [itemProduct]="item"

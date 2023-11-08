@@ -50,23 +50,23 @@ export class CatalogProductsComponent {
   // Вивод товару згідно філтру
   public filterCategory(category: string) {
     this.dataProcessingService.returnCatalogAllProducts(category).subscribe((data: ShablonDetailsProduct[]) => {
-
+      this.category = "";
       let isValue: boolean = false;
       switch (category) {
         case "shorts":
           this.isShorts = !this.isShorts;
           isValue = this.isShorts;
-          this.category =  this.isShorts ? "Шорти" : "";
+          this.category =  this.isShorts ? "Shorts" : "";
           break;
         case "sneakers":
           this.isSneakers = !this.isSneakers;
           isValue = this.isSneakers;
-          this.category =  this.isSneakers ? "Кросівки" : "";
+          this.category =  this.isSneakers ? "Sneakers" : "";
           break;
         case "tshirt":
           this.isTShirts = !this.isTShirts;
           isValue = this.isTShirts;
-          this.category = this.isTShirts ? "Футболки" : "";
+          this.category = this.isTShirts ? "T-Shirts" : "";
           break;
 
         default:
@@ -74,6 +74,7 @@ export class CatalogProductsComponent {
           break;
       }
       this.showArrayProducts = isValue ? data : this.mainProducts;
+      this.isShowProduct = false;
     });
   }
 
@@ -114,6 +115,8 @@ export class CatalogProductsComponent {
 
     this.imageProduct = productDetails.image[0];
     this.titleProduct = productDetails.title;
+    this.category = "";
+    this.category = data.type + " > " + this.titleProduct;
 
     // перевірка ціле ли число чи ні, та перезаписати округливши число
     if (productDetails.rating % 1 >= 0.5) {

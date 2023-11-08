@@ -3,7 +3,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./public",
+    "outDir": "./dist",
     "noImplicitAny": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

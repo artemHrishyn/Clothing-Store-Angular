@@ -1,4 +1,4 @@
-import { IDataProduct, IProductBuy, IProductDetails } from "./interface";
+import { IDataProduct, IProductBuy, IProductBuyNew, IProductDetails } from "./interface";
 
 export class ShablonDetailsProduct implements IProductDetails{
   color: string[] = [];
@@ -94,6 +94,24 @@ export class ProductBuy implements IProductBuy{
     this.title = title;
     this.price = price;
     this.sale = sale;
+    this.counter = counter;
+  }
+}
+export class ProductBuyNew implements IProductBuyNew{
+  image: string = "";
+  title: string = "";
+  price: number = 0;
+  counter: number = 1;
+
+  constructor(
+    image: string,
+    title: string,
+    price: number,
+    counter: number,
+  ) {
+    this.image = image;
+    this.title = title;
+    this.price = price;
     this.counter = counter;
   }
 }

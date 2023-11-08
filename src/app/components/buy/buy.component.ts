@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IProductBuy } from 'src/app/service/interface';
+import { IProductBuy, IProductBuyNew } from 'src/app/service/interface';
 @Component({
   selector: 'app-buy',
   templateUrl: './buy.component.html',
@@ -7,8 +7,8 @@ import { IProductBuy } from 'src/app/service/interface';
 })
 export class BuyComponent implements OnInit {
 
-  @Input() itemProduct: IProductBuy = {} as IProductBuy;
-  @Output() onDelete: EventEmitter<IProductBuy> = new EventEmitter<IProductBuy>();
+  @Input() itemProduct: IProductBuyNew = {} as IProductBuyNew;
+  @Output() onDelete: EventEmitter<IProductBuyNew> = new EventEmitter<IProductBuyNew>();
   @Output() onCounter: EventEmitter<{ title: string, value: number }> = new EventEmitter<{ title: string, value: number }>();
 
   public sumItem: number = 0;
@@ -24,11 +24,10 @@ export class BuyComponent implements OnInit {
 
 
   ngOnInit() {
-    const { title, image, price, sale, counter } = this.itemProduct;
+    const { title, image, price, counter } = this.itemProduct;
     this.title = title;
     this.image = image;
     this.price = price;
-    this.sale = sale;
     this.counter = counter;
     this.sumItem = this.price * this.counter;
     setTimeout(() => this.setCounter(this.title ,this.sumItem), 1);
@@ -57,7 +56,7 @@ export class BuyComponent implements OnInit {
     this.onCounter.emit({ title: title, value: value });
   }
 
-  Delate(): IProductBuy  {
+  Delate(): IProductBuyNew  {
     this.onDelete.emit(this.itemProduct);
     return this.itemProduct;
   }

@@ -8,7 +8,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { CatalogProductsComponent } from './pages/catalog-products/catalog-products.component';
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
+  { path: '', redirectTo: 'main', pathMatch: 'full' },
+  { path: "main", component: HomeComponent },
   { path: "contacts", component: ContactsComponent },
   { path: "personal-area", component: PersonalAreaComponent },
   { path: "shopping-list", component: ShoppingListComponent },

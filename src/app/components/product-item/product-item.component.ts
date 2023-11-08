@@ -6,7 +6,10 @@ import { ProductService } from 'src/app/service/product/product.service';
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.component.html',
-  styleUrls: ['./product-item.component.scss']
+  styleUrls: [
+    './product-item.component.scss',
+    './media.scss'
+  ]
 })
 export class ProductItemComponent {
   @Input() itemProduct: ShablonDetailsProduct = {} as ShablonDetailsProduct;

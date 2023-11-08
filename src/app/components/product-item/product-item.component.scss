@@ -1,4 +1,7 @@
-@import 'src/styles.scss';
+// color
+$colorBlack: #000;
+$colorWhite: #fff;
+$colorActive: #ea0606;
 
 .img-container {
   margin-bottom: 15px;
@@ -43,14 +46,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 200px;
   padding: 0 20px;
-
-  .rating {
-    color: $colorActive;
-    animation: changeColor 3s linear infinite;
-    animation-timing-function: ease-in-out;
-  }
 
   @keyframes changeColor {
     0% {
@@ -70,11 +66,16 @@ h1 {
     }
   }
 }
+.rating {
+  color: $colorActive;
+  animation: changeColor 3s linear infinite;
+  animation-timing-function: ease-in-out;
+}
 
 .coins {
   display: grid;
   grid-template-columns: 1fr;
-  font-size: 1rem;
+  font-size: 16px;
 
   >div {
     display: grid;
@@ -91,32 +92,19 @@ h1 {
   }
 
   button {
-    margin-top: 1rem;
+    margin-top: 16px;
     border: none;
     background-color: inherit;
-    font-size: 1.2rem;
     line-height: 1;
     color: currentColor;
     position: relative;
-
-    .buy {
-      background-color: $colorWhite;
-      display: inherit;
-      padding: 0.5em;
-      border: 2px solid currentColor;
-      border-radius: 2em;
-      position: relative;
-      z-index: 1;
-      transform: translate(-.4rem, -.4rem);
-      transition: .2s ease-in-out;
-    }
 
     &::after {
       content: "";
       display: block;
       width: 100%;
       height: 100%;
-      border-radius: 2em;
+      border-radius: 32px;
       position: absolute;
       top: 0;
       left: 0;
@@ -140,10 +128,18 @@ h1 {
       }
     }
   }
-
 }
-
-// }
+.buy {
+  background-color: $colorWhite;
+  display: inherit;
+  padding: 8px;
+  border: 2px solid currentColor;
+  border-radius: 32px;
+  position: relative;
+  z-index: 1;
+  transform: translate(-6px, -6px);
+  transition: .2s ease-in-out;
+}
 
 .price {
   text-decoration: line-through;

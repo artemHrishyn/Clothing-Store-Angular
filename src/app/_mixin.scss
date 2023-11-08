@@ -1,77 +1,43 @@
-@mixin gridTemplateColumnsInfo() {
-  @media only screen and (max-width: 2560px) {
-    grid-template-columns: 1fr 1fr 1fr;
+@mixin gridTemplateColumnsHead(){
+  @media only screen and (min-width: 1027px) {
+    grid-template-columns: 275px 1fr 275px;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 1027px) {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-gap: 10px;
-  }
-
-  @media only screen and (max-width: 690px) {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
-
-  @media only screen and (max-width: 375px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr);
   }
 }
 
-@mixin sizeImage($delta: 0) {
-  @media only screen and (max-width: 2560px) {
-    @if($delta ==0) {
-      max-width: 3rem;
-    }
-
-    @else {
-      max-width: 2 * $delta + rem;
-    }
+@mixin gridTemplateColumnsInfo() {
+  @media only screen and (min-width: 1900px) {
+    grid-template-columns: 500px 1fr;
   }
 
-  @media only screen and (max-width: 1440px) {
-    @if($delta ==0) {
-      max-width: 2.5rem;
-    }
-
-    @else {
-      max-width: 2.5 * $delta + rem;
-    }
+  @media only screen and (min-width: 1240px) {
+    grid-template-columns: 200px 1fr;
   }
 
-  @media only screen and (max-width: 1024px) {
-    @if($delta ==0) {
-      max-width: 2rem;
-    }
+  @media only screen and (max-width: 1240px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    grid-gap: 20px;
+  }
+}
 
-    @else {
-      max-width: 2 * $delta + rem;
-    }
+@mixin gridTemplateList(){
+  @media only screen and (min-width: 768px){
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
   }
 
-  @media only screen and (max-width: 768px) {
-    @if($delta ==0) {
-      max-width: 1.5rem;
-    }
-
-    @else {
-      max-width: 1.5 * $delta + rem;
-    }
+  @media only screen and (max-width: 768px){
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 20px;
+    justify-items: flex-start;
   }
+}
 
-  @media only screen and (max-width: 425px) {
-    @if($delta ==0) {
-      max-width: 1.2rem;
-    }
-
-    @else {
-      max-width: 1.2 * $delta + rem;
-    }
-  }
-
-  @media only screen and (max-width: 375px) {}
-
-  @media only screen and (max-width: 320px) {}
+@mixin sizeClamp($property, $minValue, $clampValue, $maxValue) {
+  #{$property}: clamp(#{$minValue}, #{$clampValue}, #{$maxValue});
 }

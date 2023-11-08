@@ -1,14 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
-/* You can add global styles to this file, and also import other style files */
 // color
-$colorBlack: #000000;
-$colorWhite: #ffffff;
-$colorActive: #ea0606;
+// $colorBlack: #000;
+// $colorWhite: #fff;
+// $colorActive: #ea0606;
 
-// font
-$fontFamilyIntegral: Integral CF sans-serif;
-$fontFamilySatoshi: Satoshi sans-serif;
-$fontFamilyInter: Inter sans-serif;
+// // font
+// $fontFamilyIntegral: Integral CF sans-serif;
+// $fontFamilySatoshi: Satoshi sans-serif;
+// $fontFamilyInter: Inter sans-serif;
 
 * {
   margin: 0;
@@ -23,8 +21,6 @@ html {
 
 body {
   font-size: 16px;
-  color: $colorBlack;
-  background-color: $colorWhite;
 }
 
 img {

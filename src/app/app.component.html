@@ -10,23 +10,16 @@
       <h1>Shop.co</h1>
     </div>
     <ul class="menu">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" [routerLink]="'/'"
-          >Главное</a
-        >
+      <li>
+        <a [routerLink]="'/main'" routerLinkActive="active">Главное</a>
       </li>
-      <li class="nav-item">
-        <a
-          class="nav-link active"
-          aria-current="page"
-          [routerLink]="'catalog-products'"
+      <li>
+        <a [routerLink]="'catalog-products'" routerLinkActive="active"
           >Каталог</a
         >
       </li>
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" [routerLink]="'contacts'"
-          >Контакти</a
-        >
+      <li>
+        <a [routerLink]="'contacts'" routerLinkActive="active">Контакти</a>
       </li>
     </ul>
     <div class="personal">
@@ -40,20 +33,14 @@
   </nav>
 
   <ul class="menu-2" *ngIf="isShowMenu">
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" [routerLink]="'/'"
-        >Главное</a
-      >
+    <li>
+      <a [routerLink]="'/main'" routerLinkActive="active">Главное</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" class="nav-link active"
-        >Каталог</a
-      >
+    <li>
+      <a [routerLink]="'catalog-products'" routerLinkActive="active">Каталог</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" [routerLink]="'contacts'"
-        >Контакти</a
-      >
+    <li>
+      <a [routerLink]="'contacts'" routerLinkActive="active">Контакти</a>
     </li>
   </ul>
 
@@ -120,17 +107,19 @@
               <img
                 src="https://img.icons8.com/fluency/48/phone--v1.png"
                 alt="phone--v1"
+                class="social__contact"
               />+38(093)647-04-24</a
             >
           </li>
           <li>
             <a href="mailto:genser.artem@gmail.com">
               <img
+                class="social__contact"
                 src="https://img.icons8.com/dusk/64/filled-message.png"
                 alt="filled-message"
               />
-              genser.artem@gmail.com</a
-            >
+              genser.artem
+            </a>
           </li>
         </ul>
       </li>

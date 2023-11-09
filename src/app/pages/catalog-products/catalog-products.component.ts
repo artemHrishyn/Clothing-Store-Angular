@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CounterPipe } from 'src/app/pipe/counter/counter.pipe';
 import { ProductBuy, ShablonDetailsProduct } from 'src/app/service/instance.class';
 import { IDataProduct, IProductBuy } from 'src/app/service/interface';
 import { ProcessingDataService } from 'src/app/service/processing-data/processing-data.service';
@@ -16,6 +17,7 @@ export class CatalogProductsComponent {
   public isTShirts: boolean = false;
 
   public showArrayProducts: ShablonDetailsProduct[] = [];
+  public reservArrayProducts: ShablonDetailsProduct[] = [];
   private mainProducts: ShablonDetailsProduct[] = [];
   public category: string = "";
 
@@ -35,17 +37,37 @@ export class CatalogProductsComponent {
 
   constructor(
     private dataProcessingService: ProcessingDataService,
-    private productService: ProductService
+    private productService: ProductService,
+    private counterPipe: CounterPipe
   ) {}
 
   ngOnInit(): void {
     this.dataProcessingService.getAllProduct().subscribe((data: ShablonDetailsProduct[]) => {
-      this.showArrayProducts = data;
+      this.reservArrayProducts = data
+      this.showArrayProducts = this.reservArrayProducts.slice(0,10);
       this.mainProducts = data;
     });
   }
 
-  public generateArray = (n: number): any[] => Array(n);
+  changePage(value: number) {
+    switch (value) {
+      case 1:
+        this.showArrayProducts = this.reservArrayProducts.slice(0, 10);
+      break;
+      case 2:
+        this.showArrayProducts = this.reservArrayProducts.slice(10,20);
+      break;
+      case 3:
+        this.showArrayProducts = this.reservArrayProducts.slice(20, this.reservArrayProducts.length);
+      break;
+      default:
+        this.showArrayProducts = this.reservArrayProducts.slice(0, 10);
+        break;
+    }
+  }
+
+  // Створює масив рядків довжиною n, де кожен елемент масиву є порожнім рядком. Потым пыдставляє ★
+  public generateArray = (n: number): string[] => Array(n);
 
   // Вивод товару згідно філтру
   public filterCategory(category: string) {
@@ -78,6 +100,7 @@ export class CatalogProductsComponent {
     });
   }
 
+  // Відображення списку розмірів
   public showSize(sizes: { [key: string]: boolean }): { key: string, value: boolean }[] {
     const sizeArray: { key: string; value: boolean }[] = Object.entries(sizes).map(([key, value]) => ({
       key,
@@ -87,7 +110,7 @@ export class CatalogProductsComponent {
   }
 
   public handleProductClicked(product: ShablonDetailsProduct): void {
-    this.dataProcessingService.fetchFirebaseAllProduct().subscribe((data: IDataProduct[]) => {
+    this.dataProcessingService.getData("clothes").subscribe((data: IDataProduct[]) => {
       const foundItem = data.find(item =>
         item.title === product.title &&
         item.rating === product.rating &&
@@ -100,7 +123,7 @@ export class CatalogProductsComponent {
     });
   }
 
-  // створення Детальну інформацію о продукті та записує у зміні
+  // Створення детальної інформації о продукті та запис у зміну
   private creatDetailsInfoProduct( data: IDataProduct): void {
     let productDetails: ShablonDetailsProduct = new ShablonDetailsProduct(
       data.color,
@@ -170,19 +193,6 @@ export class CatalogProductsComponent {
 
 
   public productCounter(value: string) {
-    switch (value) {
-      case "minus":
-        (this.counter > 0) ? this.counter-- : 0;
-        break;
-
-      case "plus":
-        this.counter++;
-        break;
-
-      default:
-        this.counter = 0;
-        break;
-    }
+    this.counter = this.counterPipe.transform(value, this.counter);
   }
-
 }

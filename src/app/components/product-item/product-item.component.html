@@ -1,24 +1,29 @@
-<div class="img-container" (click)="openProduct()">
-  <img src="{{ image }}" alt="product item" />
+<div class="diamond-container">
+  <div class="diamond">
+    <div class="diamond-wrapper">
+      <div class="diamond-content">$800</div>
+    </div>
+  </div>
 </div>
 
-<div class="info">
-  <h1>
-    {{ title }}
-  </h1>
-  <p>
-    Рейтинг:
-    <span class="rating">
-      {{ createStar(rating) }}
-    </span>
-  </p>
-  <div class="coins">
-    <div>
-      <p class="sale">{{ logItemSale(sale) }}</p>
-      <p [ngClass]="{ price: isPrice }">{{ price }}UAH</p>
+<div class="item-wrapper">
+  <div class="content-wrapper">
+    <div class="img-container">
+      <img [src]="image" alt="product" (click)="openProduct()" />
     </div>
-    <button>
-      <span class="buy" (click)="buyProduct()">купити</span>
-    </button>
+
+    <div class="content-text">
+      <p>
+        Рейтинг:
+        <span class="rating">
+          {{ createStar(rating) }}
+        </span>
+      </p>
+      <p class="item-name">{{ title }}</p>
+    </div>
   </div>
+  <button class="view-more-btn" (click)="buyProduct()" *ngIf="isBuy">
+    Купити
+  </button>
+  <button class="view-more-btn" *ngIf="!isBuy">Додано до корзини</button>
 </div>

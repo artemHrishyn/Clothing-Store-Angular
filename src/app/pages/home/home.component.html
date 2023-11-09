@@ -6,7 +6,7 @@
       розробленого, щоб підкреслити вашу індивідуальність і задовольнити ваше
       почуття стилю.
     </p>
-    <a href="#">Здійснити покупку</a>
+    <a (click)="goToUrl('catalog-products')">Здійснити покупку</a>
     <ul>
       <li>
         <h3>{{ totalBrands }} +</h3>
@@ -43,7 +43,9 @@
     </li>
   </ul>
   <button>
-    <span class="buy" [routerLink]="'catalog-products'">Подивитись все</span>
+    <span class="buy" (click)="goToUrl('catalog-products')"
+      >Подивитись все</span
+    >
   </button>
 </section>
 <!-- arrivals end -->
@@ -57,7 +59,9 @@
     </li>
   </ul>
   <button>
-    <span class="buy" [routerLink]="'catalog-products'">Подивитись все</span>
+    <span class="buy" (click)="goToUrl('catalog-products')"
+      >Подивитись все</span
+    >
   </button>
 </section>
 <!-- selling end -->

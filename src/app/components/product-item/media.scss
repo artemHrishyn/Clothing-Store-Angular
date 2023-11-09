@@ -1,39 +1,39 @@
-@media only screen and (min-width: 1750px) {
-  .info {
-      height: 200px;
-  }
-  .coins{
-    button{
-      font-size: 19px;
-    }
-  }
-}
-@media only screen and (max-width: 1750px) {
-  .info {
-    height: 200px;
-  }
-  .coins{
-    button {
-      font-size: 19px;
-    }
-  }
-}
-@media only screen and (max-width: 768px) {
-}
-@media only screen and (max-width: 425px) {
-  .info {
-    height: 140px;
-  }
+// @media only screen and (min-width: 1750px) {
+//   .info {
+//       height: 160px;
+//   }
+//   .coins{
+//     button{
+//       font-size: 19px;
+//     }
+//   }
+// }
+// @media only screen and (max-width: 1750px) {
+//   .info {
+//     height: 160px;
+//   }
+//   .coins{
+//     button {
+//       font-size: 19px;
+//     }
+//   }
+// }
+// @media only screen and (max-width: 768px) {
+// }
+// @media only screen and (max-width: 425px) {
+//   .info {
+//     height: 130px;
+//   }
 
-  .coins{
-    button{
-      font-size: 15px;
-      max-width: 125px;
-      justify-self: center;
-    }
-  }
+//   .coins{
+//     button{
+//       font-size: 15px;
+//       max-width: 125px;
+//       justify-self: center;
+//     }
+//   }
 
-  .buy{
-    padding: 3px 18px;
-  }
-}
+//   .buy{
+//     padding: 3px 18px;
+//   }
+// }

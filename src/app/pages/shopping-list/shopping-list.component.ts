@@ -36,7 +36,6 @@ export class ShoppingListComponent{
     private productService: ProductService
   ) {
     this.boughtProducts = this.productService.getBoughtProducts();
-    console.log(this.boughtProductsNew);
 
     this.boughtProducts.forEach(elem => {
       const price = (elem.sale == 0)? elem.price : elem.sale

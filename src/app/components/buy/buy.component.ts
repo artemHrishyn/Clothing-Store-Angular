@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { CounterPipe } from 'src/app/pipe/counter/counter.pipe';
 import { IProductBuy, IProductBuyNew } from 'src/app/service/interface';
 @Component({
   selector: 'app-buy',
@@ -20,7 +21,7 @@ export class BuyComponent implements OnInit {
   public counter: number = 0;
   public close: boolean = false;
 
-  constructor() {}
+  constructor( private counterPipe: CounterPipe ) {}
 
 
   ngOnInit() {
@@ -34,19 +35,7 @@ export class BuyComponent implements OnInit {
   }
 
   public productCounter(value: string) {
-    switch (value) {
-      case "minus":
-        (this.counter > 0) ? this.counter-- : 0;
-      break;
-
-      case "plus":
-        this.counter++;
-      break;
-
-      default:
-        this.counter = 0;
-      break;
-    }
+    this.counter = this.counterPipe.transform(value, this.counter);
     this.sumItem = 0;
     this.sumItem = this.price * this.counter;
     this.setCounter(this.title ,this.sumItem);

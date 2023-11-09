@@ -23,8 +23,8 @@ export class ProductItemComponent {
   public sale: number = 0;
   public counter: number = 1;
 
-  private isPriceV2: Array<boolean> = [];
   public isPrice: boolean = true;
+  public isBuy: boolean = true;
 
   ngOnInit() {
     this.image = this.itemProduct.image[0];
@@ -53,28 +53,25 @@ export class ProductItemComponent {
     );
 
     this.productService.buyProduct(item);
-
+    this.isBuy = !this.isBuy;
     return item;
   }
 
-    public logItemSale(sale: number): string {
-      if (sale > 0) {
-        this.isPriceV2.push(true);
-        return sale + "UAN";
-      } else {
-        this.isPriceV2.push(false);
-        return "";
-      }
-    }
+  // перевірка
+  public logItemSale(sale: number): string {
+    return (sale > 0) ? (sale + "UAN") : "";
+  }
 
-    public createStar(value: number): string {
-      let star: string = "";
-      for (let index = 0; index < value; index++) {
-        star += "★ ";
-      }
-      return star;
+  public createStar(value: number): string {
+    let star: string = "";
+    for (let index = 0; index < value; index++) {
+      star += "★ ";
     }
-    public openProduct(): void {
-      this.productClicked.emit(this.itemProduct);
-    }
+    return star;
+  }
+
+  // методд для того щоб відкрити у каталозі детальню інформацію продукта
+  public openProduct(): void {
+    this.productClicked.emit(this.itemProduct);
+  }
 }

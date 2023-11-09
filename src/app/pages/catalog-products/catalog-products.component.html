@@ -2,10 +2,7 @@
   <div class="filter">
     <h1>{{ category }}</h1>
     <ul class="filter__sort">
-      <li
-        (click)="filterCategory('shorts')"
-        [ngClass]="isShorts ? 'active' : ''"
-      >
+      <li (click)="filterCategory('shorts')">
         <img
           src="https://img.icons8.com/external-goofy-color-kerismaker/96/external-Short-summer-goofy-color-kerismaker.png"
           alt="external-Short-summer-goofy-color-kerismaker"
@@ -27,15 +24,46 @@
   </div>
 
   <!-- Список усієї продукції -->
-  <div class="catalog" *ngIf="!isShowProduct">
-    <ul class="catalog__list">
-      <li *ngFor="let item of showArrayProducts">
-        <app-product-item
-          [itemProduct]="item"
-          (productClicked)="handleProductClicked($event)"
-        ></app-product-item>
-      </li>
-    </ul>
+
+  <div class="list-product" *ngIf="!isShowProduct">
+    <nav>
+      <ul class="pagination pagination-lg">
+        <li class="page-item">
+          <a class="page-link" (click)="changePage(1)">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" (click)="changePage(2)">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" (click)="changePage(3)">3</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="catalog">
+      <ul class="catalog__list">
+        <li *ngFor="let item of showArrayProducts">
+          <app-product-item
+            [itemProduct]="item"
+            (productClicked)="handleProductClicked($event)"
+          ></app-product-item>
+        </li>
+      </ul>
+    </div>
+
+    <nav>
+      <ul class="pagination pagination-lg">
+        <li class="page-item">
+          <a class="page-link" (click)="changePage(1)">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" (click)="changePage(2)">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" (click)="changePage(3)">3</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 
   <!-- Детальна інформація конкретного товара -->

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ShablonDetailsProduct } from 'src/app/service/instance.class';
 import { ProcessingDataService } from 'src/app/service/processing-data/processing-data.service';
 
@@ -21,7 +22,8 @@ export class HomeComponent {
   public imgBrands: string[] = [];
 
   constructor(
-    private processingDataService: ProcessingDataService
+    private processingDataService: ProcessingDataService,
+    private routing: Router,
   ) {
 
     this.processingDataService.getTopProduct().subscribe((data: ShablonDetailsProduct[]) => {
@@ -37,5 +39,9 @@ export class HomeComponent {
       this.totalBrands = data.brandsLength;
       this.totalProduct = data.totalProduct;
     });
+  }
+
+  public goToUrl(value: string) {
+    this.routing.navigate([value]);
   }
 }

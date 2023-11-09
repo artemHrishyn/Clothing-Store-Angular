@@ -1,0 +1,21 @@
+.title{
+  font-size: 40px;
+}
+
+.info{
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  grid-gap: 20px;
+}
+
+aside{
+  padding: 20px;
+}
+
+.info__sign-out{
+  cursor: pointer;
+}
+
+article{
+  padding: 20px;
+}

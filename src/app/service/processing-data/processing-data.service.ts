@@ -24,6 +24,8 @@ export class ProcessingDataService {
     private mixElementsPipe: MixElementsPipe,
   ) {}
 
+
+  // Обробка даних та повертає спільний масив усіх категорії продуктів
   public getData(value: string): Observable<IDataProduct[]> {
     return this.receivingDataService.fetchData(value).pipe(
       map((data: Object) => {
@@ -37,6 +39,7 @@ export class ProcessingDataService {
     );
   };
 
+  // Повертає масив брендів, довжену брендів та продуктів
   public returnBrandsArray(): Observable<{
     uniqueImage: string[],
     brandsLength: number,
@@ -71,6 +74,7 @@ export class ProcessingDataService {
     );
   }
 
+  // Повертає масив зображень брендів
   private imageBrandNew(value: string[]): string[]{
     const newArray: string[] = [];
     if (window.innerWidth > 1500) {
@@ -86,35 +90,39 @@ export class ProcessingDataService {
     return newArray;
   }
 
+  // Створення та повертає елемент згідно класу ShablonDetailsProduct
+  private addDetailsProduct(value: IDataProduct): ShablonDetailsProduct {
+    const item: ShablonDetailsProduct = new ShablonDetailsProduct(
+      value.color,
+      value.image,
+      value.price,
+      value.rating,
+      value.sale,
+      value.size,
+      value.title,
+      value.type
+    );
+    return item;
+  }
 
+  // Пвертає з бекенду масив продуктів згідно інтерфейсу ShablonDetailsProduct[]
   public getAllProduct(): Observable<ShablonDetailsProduct[]> {
     return this.getData(SiteCategory.clothes).pipe(
       map((data: IDataProduct[]) => {
         const allProduct: ShablonDetailsProduct[] = [];
 
         data.forEach((elem: IDataProduct) => {
-
-          const item: ShablonDetailsProduct = new ShablonDetailsProduct(
-            elem.color,
-            elem.image,
-            elem.price,
-            elem.rating,
-            elem.sale,
-            elem.size,
-            elem.title,
-            elem.type
-          );
-          allProduct.push(item);
+          allProduct.push(this.addDetailsProduct(elem));
         });
 
-        const mixedBrands = this.mixElementsPipe.transform(allProduct);
-        const newValue: ShablonDetailsProduct[] =  mixedBrands as ShablonDetailsProduct[];
+        const mixedBrands: ShablonDetailsProduct[] = this.mixElementsPipe.transform(allProduct);
+        const newValue: ShablonDetailsProduct[] =  mixedBrands;
         return newValue;
       })
     );
   }
 
-  // return Product [] with data. Top product
+  // Пвертає з бекенду масив ТОП продуктів згідно інтерфейсу ShablonDetailsProduct[]
   public getTopProduct(): Observable<ShablonDetailsProduct[]> {
     return this.getAllProduct().pipe(
       map((data: ShablonDetailsProduct[]) => {
@@ -129,47 +137,29 @@ export class ProcessingDataService {
     );
   }
 
-
+  // Фальтрація по категаріям. Повертає, згідно значення, масив продуктів.
   private getCatalogAllProducts(value: string): Observable<IDataProduct[]> {
     return  this.receivingDataService.fetchData("clothes").pipe(
       map((data: Object) => {
         const globalCategory = data as GlobalCategory;
-
         let getShortsData: IDataProduct[] = [];
 
         switch (value) {
           case "shorts":
             getShortsData.push(...globalCategory["shorts"]);
             break;
-
           case "tshirt":
             getShortsData.push(...globalCategory["tshirt"]);
             break;
-
           case "sneakers":
             getShortsData.push(...globalCategory["sneakers"]);
             break;
 
           default:
             console.log("Не збігаєтся з жодної категорії. Доступні категорії: 'shorts' | 'sneakers' | 'tshirt' ");
-
             break;
         }
-
         return getShortsData;
-      })
-    );
-  }
-
-  public fetchFirebaseAllProduct(): Observable<IDataProduct[]> {
-    return this.receivingDataService.fetchData("clothes").pipe(
-      map((data: Object) => {
-        const globalCategory = data as GlobalCategory;
-        let allProduct: IDataProduct[] = [];
-        allProduct.push(...globalCategory["shorts"]);
-        allProduct.push(...globalCategory["sneakers"]);
-        allProduct.push(...globalCategory["tshirt"]);
-        return allProduct;
       })
     );
   }
@@ -180,21 +170,11 @@ export class ProcessingDataService {
         const allProductShorts: ShablonDetailsProduct[] = [];
 
         data.forEach((elem: IDataProduct) => {
-          let shablonDetailsProduct =
-            new ShablonDetailsProduct(
-              elem.color,
-              elem.image,
-              elem.price,
-              elem.rating,
-              elem.sale,
-              elem.size,
-              elem.title,
-              elem.type
-            );
-        allProductShorts.push(shablonDetailsProduct);
+        allProductShorts.push(this.addDetailsProduct(elem));
       });
         return allProductShorts;
       })
     );
   }
+
 }

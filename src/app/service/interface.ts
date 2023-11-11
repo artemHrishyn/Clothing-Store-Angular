@@ -5,7 +5,8 @@ export interface GlobalCategory{
 }
 export interface IDataProduct {
   brand: {
-    [key: string]: string
+    image: string,
+    title: string
   },
   color: string[],
   gender: string[],
@@ -13,7 +14,8 @@ export interface IDataProduct {
   image: string[],
   price: number,
   quantity: {
-     [key: number]: number
+     female: number;
+     male: number
   },
   rating: number,
   sale: number,

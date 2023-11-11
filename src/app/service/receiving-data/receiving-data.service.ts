@@ -7,9 +7,9 @@ import { Observable, map } from 'rxjs';
 })
 export class ReceivingDataService {
 
-   constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  private getData(value: string ) {
+  private getData(value: string) {
     const data: string = `https://online-clothing-store-34e45-default-rtdb.europe-west1.firebasedatabase.app/${value}.json`;
     return this.httpClient.get(data);
   }
@@ -20,5 +20,10 @@ export class ReceivingDataService {
         return data;
       })
     );
+  }
+
+  public sendData(data: any) {
+    const url: string = 'https://online-clothing-store-34e45-default-rtdb.europe-west1.firebasedatabase.app/';
+    return this.httpClient.post(url, data);
   }
 }

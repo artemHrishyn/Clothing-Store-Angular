@@ -5,8 +5,14 @@ import { GlobalCategory, IDataProduct } from '../interface';
 import { ShablonDetailsProduct } from '../instance.class';
 import { MixElementsPipe } from 'src/app/pipe/mix-elements/mix-elements.pipe';
 enum SiteCategory {
-  clothes = "clothes",
-  reviews = "reviews"
+  clothes = 'clothes',
+  reviews = 'reviews'
+};
+
+enum ProductCategory {
+  shorts = 'shorts',
+  sneakers = 'sneakers',
+  tshirt = 'tshirt'
 };
 interface BrandsInfo{
   image: string;
@@ -31,9 +37,9 @@ export class ProcessingDataService {
       map((data: Object) => {
         const globalCategory = data as GlobalCategory;
         let allProduct: IDataProduct[] = [];
-        allProduct.push(...globalCategory["shorts"]);
-        allProduct.push(...globalCategory["sneakers"]);
-        allProduct.push(...globalCategory["tshirt"]);
+        allProduct.push(...globalCategory[ProductCategory.shorts]);
+        allProduct.push(...globalCategory[ProductCategory.sneakers]);
+        allProduct.push(...globalCategory[ProductCategory.tshirt]);
         return allProduct;
       })
     );
@@ -139,24 +145,24 @@ export class ProcessingDataService {
 
   // Фальтрація по категаріям. Повертає, згідно значення, масив продуктів.
   private getCatalogAllProducts(value: string): Observable<IDataProduct[]> {
-    return  this.receivingDataService.fetchData("clothes").pipe(
+    return  this.receivingDataService.fetchData('clothes').pipe(
       map((data: Object) => {
         const globalCategory = data as GlobalCategory;
         let getShortsData: IDataProduct[] = [];
 
         switch (value) {
-          case "shorts":
-            getShortsData.push(...globalCategory["shorts"]);
+          case'shorts':
+            getShortsData.push(...globalCategory[ProductCategory.shorts]);
             break;
-          case "tshirt":
-            getShortsData.push(...globalCategory["tshirt"]);
+          case 'tshirt':
+            getShortsData.push(...globalCategory[ProductCategory.tshirt]);
             break;
-          case "sneakers":
-            getShortsData.push(...globalCategory["sneakers"]);
+          case 'sneakers':
+            getShortsData.push(...globalCategory[ProductCategory.sneakers]);
             break;
 
           default:
-            console.log("Не збігаєтся з жодної категорії. Доступні категорії: 'shorts' | 'sneakers' | 'tshirt' ");
+            console.log('Не збігаєтся з жодної категорії. Доступні категорії: "shorts" | "sneakers" | "tshirt" ');
             break;
         }
         return getShortsData;

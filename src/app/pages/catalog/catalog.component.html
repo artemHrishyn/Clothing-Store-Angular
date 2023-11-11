@@ -1,0 +1,136 @@
+<section>
+  <div class="filter">
+    <h1>{{ category }}</h1>
+    <ul class="filter__sort">
+      <li (click)="filterCategory('shorts')">
+        <img
+          src="https://img.icons8.com/external-goofy-color-kerismaker/96/external-Short-summer-goofy-color-kerismaker.png"
+          alt="external-Short-summer-goofy-color-kerismaker"
+        />Шорти
+      </li>
+      <li (click)="filterCategory('tshirt')">
+        <img
+          src="https://img.icons8.com/cotton/64/t-shirt--v1.png"
+          alt="t-shirt--v1"
+        />Футболки
+      </li>
+      <li (click)="filterCategory('sneakers')">
+        <img
+          src="https://img.icons8.com/external-smashingstocks-flat-smashing-stocks/66/external-Sneakers-shoes-and-footwear-smashingstocks-flat-smashing-stocks-21.png"
+          alt="external-Sneakers-shoes-and-footwear-smashingstocks-flat-smashing-stocks-21"
+        />Кросівки
+      </li>
+    </ul>
+  </div>
+
+  <!-- Список усієї продукції -->
+
+  <div class="list-product" *ngIf="!isShowProduct">
+    <nav>
+      <ul class="pagination pagination-lg">
+        <li class="page-item">
+          <a class="page-link" (click)="changePage(1)">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" (click)="changePage(2)">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" (click)="changePage(3)">3</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="catalog">
+      <ul class="catalog__list">
+        <li *ngFor="let item of showArrayProducts">
+          <app-product-cart
+            [itemProduct]="item"
+            (productClicked)="handleProductClicked($event)"
+          ></app-product-cart>
+        </li>
+      </ul>
+    </div>
+
+    <nav>
+      <ul class="pagination pagination-lg">
+        <li class="page-item">
+          <a class="page-link" (click)="changePage(1)">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" (click)="changePage(2)">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" (click)="changePage(3)">3</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Детальна інформація конкретного товара -->
+  <div class="product-item" *ngIf="isShowProduct">
+    <div class="product-item__galery">
+      <ul>
+        <li *ngFor="let item of imageProducts">
+          <img src="{{ item }}" alt="image" (click)="showMainImage(item)" />
+        </li>
+      </ul>
+      <img
+        class="product-item__galery__main"
+        src="{{ imageProduct }}"
+        alt="Продукт"
+      />
+    </div>
+    <div class="product-item__info">
+      <h1>{{ titleProduct }}</h1>
+      <div class="rating">
+        <ul>
+          <li *ngFor="let item of generateArray(ratingProduct)">★</li>
+        </ul>
+        {{ ratingProduct }}/5
+      </div>
+      <hr />
+      <div class="coins">
+        <p class="sale" *ngIf="isSale">{{ saleProduct }}</p>
+        <p class="price">
+          {{ priceProduct }}
+        </p>
+        <p class="percentage" *ngIf="isSale">{{ percentageProduct }}%</p>
+      </div>
+      <hr />
+      <div class="color">
+        <p>Select Colors</p>
+        <ul>
+          <li
+            *ngFor="let color of colorProduct"
+            [style.background-color]="color"
+          ></li>
+        </ul>
+      </div>
+      <hr />
+      <div class="size">
+        <p>Choose Size</p>
+        <ul>
+          <li
+            *ngFor="let item of isSizeProduct"
+            [style.background-color]="getItemColor(item.value)"
+            [style.cursor]="getCursor(item.value)"
+          >
+            {{ item.key }}
+          </li>
+        </ul>
+      </div>
+      <hr />
+      <div class="reserves">
+        <div class="quantity">
+          <span class="quantity__count" (click)="productCounter('minus')"
+            >-</span
+          ><span>{{ counter }}</span
+          ><span class="quantity__count" (click)="productCounter('plus')"
+            >+</span
+          >
+        </div>
+        <div class="buy" (click)="buyProduct()">Add to Cart</div>
+      </div>
+    </div>
+  </div>
+</section>

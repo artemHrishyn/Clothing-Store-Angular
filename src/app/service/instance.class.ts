@@ -35,26 +35,38 @@ export class ShablonDetailsProduct implements IProductDetails{
   }
 }
 export class AllProductData implements IDataProduct{
-  brand: { [key: string]: string };
+  brand: {
+    image: string,
+    title: string
+  };
   color: string[];
   gender: string[];
   id: number;
   image: string[];
   price: number;
-  quantity: { [key: number]: number };
+  quantity: {
+    female: number,
+    male: number
+  };
   rating: number;
   sale: number;
   size: { [key: string]: boolean };
   title: string;
   type: string;
   constructor(
-    brand: { [key: string]: string  },
+    brand: {
+    image: string,
+    title: string
+  },
     color: string[],
     gender: string[],
     id: number,
     image: string[],
     price: number,
-    quantity: {  [key: number]: number;  },
+    quantity: {
+    female: number,
+    male: number
+  },
     rating: number,
     sale: number,
     size: { [key: string]: boolean; },

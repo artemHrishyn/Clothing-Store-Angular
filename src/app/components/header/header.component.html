@@ -42,29 +42,5 @@
     </li>
   </ul>
 
-  <div class="form" *ngIf="isLogin">
-    <form action="" method="get">
-      <h3 (click)="loginShow()">X</h3>
-      <h1>Welcome</h1>
-      <div>
-        <p>Login:</p>
-        <input
-          type="text"
-          placeholder="Login"
-          [(ngModel)]="login"
-          name="login"
-        />
-      </div>
-      <div>
-        <p>Password:</p>
-        <input
-          type="password"
-          placeholder="Password"
-          [(ngModel)]="password"
-          name="password"
-        />
-      </div>
-      <button type="submit" (click)="loginRequest()">Вход</button>
-    </form>
-  </div>
+  <app-login-form *ngIf="isLogin"></app-login-form>
 </header>

@@ -1,4 +1,9 @@
-import { IDataProduct, IProductBuy, IProductBuyNew, IProductDetails } from "./interface";
+import {
+  IDataProduct,
+  IProductBuy,
+  IProductBuyNew,
+  IProductDetails
+} from "./interface";
 
 export class ShablonDetailsProduct implements IProductDetails{
   color: string[] = [];

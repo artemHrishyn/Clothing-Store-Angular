@@ -8,19 +8,17 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 import { ProcessingDataService } from './service/processing-data/processing-data.service';
 import { ReceivingDataService } from './service/receiving-data/receiving-data.service';
-import { MixElementsPipe } from './pipe/mix-elements/mix-elements.pipe';
 import { ProductService } from './service/product/product.service';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
-import { CounterPipe } from './pipe/counter/counter.pipe';
 import { PagesModule } from './pages/pages.module';
 import { HeaderModule } from './components/header/header.module';
+import { GoToUrlService } from './service/goToUrl/go-to-url.service';
+import { PipeModule } from './pipe/pipe.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MixElementsPipe,
-    CounterPipe
+    AppComponent
   ],
   imports: [
     HttpClientModule,
@@ -32,17 +30,17 @@ import { HeaderModule } from './components/header/header.module';
     BrowserModule,
     AppRoutingModule,
     PagesModule,
-    HeaderModule
+    HeaderModule,
+    PipeModule
   ],
   exports: [],
   providers: [
     ReceivingDataService,
     ProcessingDataService,
-    MixElementsPipe,
-    CounterPipe,
     ProductService,
     ScreenTrackingService,
-    UserTrackingService
+    UserTrackingService,
+    GoToUrlService
   ],
   bootstrap: [AppComponent]
 })

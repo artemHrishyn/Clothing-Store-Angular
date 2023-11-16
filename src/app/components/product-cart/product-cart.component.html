@@ -16,10 +16,10 @@
       <p class="rating">
         Рейтинг:
         <span>
-          {{ createStar(rating) }}
+          {{ createStar(itemProduct.rating) }}
         </span>
       </p>
-      <p class="item-name">{{ title }}</p>
+      <p class="item-name">{{ itemProduct.title }}</p>
     </div>
   </div>
   <button class="view-more-btn" (click)="buyProduct()" *ngIf="isBuy">

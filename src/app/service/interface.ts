@@ -51,3 +51,11 @@ export interface IProductBuyNew {
   price: number,
   counter: number
 }
+export interface IReviews {
+  date: string,
+  image: string,
+  lastname: string,
+  name: string,
+  rating: number,
+  text: string
+}

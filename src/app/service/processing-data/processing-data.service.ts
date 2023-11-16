@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ReceivingDataService } from '../receiving-data/receiving-data.service';
 import { Observable, map } from 'rxjs';
-import { GlobalCategory, IDataProduct } from '../interface';
+import { GlobalCategory, IDataProduct, IReviews } from '../interface';
 import { ShablonDetailsProduct } from '../instance.class';
 import { MixElementsPipe } from 'src/app/pipe/mix-elements/mix-elements.pipe';
+import { ClassProductService } from '../product/class-product/class-product.service';
 enum SiteCategory {
   clothes = 'clothes',
   reviews = 'reviews'
@@ -28,6 +29,7 @@ export class ProcessingDataService {
   constructor(
     private receivingDataService: ReceivingDataService,
     private mixElementsPipe: MixElementsPipe,
+    private classProductService: ClassProductService
   ) {}
 
 
@@ -68,11 +70,13 @@ export class ProcessingDataService {
 
         const length: number = data.length;
 
-        const uniqueBrands = Array.from(new Set(brandArray));
-        const uniqueImage = Array.from(new Set(imageArray));
+        const uniqueBrands: string[] =  Array.from(new Set(brandArray));
+        const uniqueImage: string[] = Array.from(new Set(imageArray));
+
+        const randomImage: string[] = this.mixElementsPipe.transform(uniqueImage);
 
         return {
-          uniqueImage: this.imageBrandNew(uniqueImage),
+          uniqueImage: this.imageBrandNew(randomImage),
           brandsLength: uniqueBrands.length,
           totalProduct: length
         };
@@ -96,21 +100,6 @@ export class ProcessingDataService {
     return newArray;
   }
 
-  // Створення та повертає елемент згідно класу ShablonDetailsProduct
-  private addDetailsProduct(value: IDataProduct): ShablonDetailsProduct {
-    const item: ShablonDetailsProduct = new ShablonDetailsProduct(
-      value.color,
-      value.image,
-      value.price,
-      value.rating,
-      value.sale,
-      value.size,
-      value.title,
-      value.type
-    );
-    return item;
-  }
-
   // Пвертає з бекенду масив продуктів згідно інтерфейсу ShablonDetailsProduct[]
   public getAllProduct(): Observable<ShablonDetailsProduct[]> {
     return this.getData(SiteCategory.clothes).pipe(
@@ -118,7 +107,7 @@ export class ProcessingDataService {
         const allProduct: ShablonDetailsProduct[] = [];
 
         data.forEach((elem: IDataProduct) => {
-          allProduct.push(this.addDetailsProduct(elem));
+          allProduct.push( this.classProductService.returnClassDetailsProduct(elem));
         });
 
         const mixedBrands: ShablonDetailsProduct[] = this.mixElementsPipe.transform(allProduct);
@@ -145,7 +134,7 @@ export class ProcessingDataService {
 
   // Фальтрація по категаріям. Повертає, згідно значення, масив продуктів.
   private getCatalogAllProducts(value: string): Observable<IDataProduct[]> {
-    return  this.receivingDataService.fetchData('clothes').pipe(
+    return  this.receivingDataService.fetchData(SiteCategory.clothes).pipe(
       map((data: Object) => {
         const globalCategory = data as GlobalCategory;
         let getShortsData: IDataProduct[] = [];
@@ -176,11 +165,19 @@ export class ProcessingDataService {
         const allProductShorts: ShablonDetailsProduct[] = [];
 
         data.forEach((elem: IDataProduct) => {
-        allProductShorts.push(this.addDetailsProduct(elem));
+        allProductShorts.push(this.classProductService.returnClassDetailsProduct(elem));
       });
         return allProductShorts;
       })
     );
   }
 
+  // Вивод відкуків
+  public getReviews(): Observable<IReviews[]> {
+    return this.receivingDataService.fetchData(SiteCategory.reviews).pipe(
+       map((data: Object) => {
+        return  data as IReviews[];
+      })
+    );
+  }
 }

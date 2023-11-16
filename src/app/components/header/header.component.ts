@@ -6,7 +6,6 @@
     templateUrl: './header.component.html',
     styleUrls: [
       './header.component.scss',
-      './form.component.scss',
       './media.scss',
     ]
   })
@@ -18,9 +17,6 @@
 
     public isShowMenu: boolean = false;
     public isLogin: boolean = false;
-
-    public login: string = "";
-    public password: string = "";
 
     public userImg: string = "assets/image/icon/user.svg";
 
@@ -41,12 +37,10 @@
     }
 
     public loginRequest() {
-
       this.goToUrl('personal-area');
-
     }
 
-    validatePassword(password: string): boolean {
+    private validatePassword(password: string): boolean {
       const passwordRegex = /^(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?])(?=.*[A-Z])(?=.*[0-9]).{8,}$/;
       return passwordRegex.test(password);
     }

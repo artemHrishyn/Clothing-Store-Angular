@@ -7,11 +7,13 @@ import { Observable, map } from 'rxjs';
 })
 export class ReceivingDataService {
 
-  constructor(private httpClient: HttpClient) { }
+  private url: string = 'https://online-clothing-store-34e45-default-rtdb.europe-west1.firebasedatabase.app/';
+
+  constructor(private http: HttpClient) { }
 
   private getData(value: string) {
-    const data: string = `https://online-clothing-store-34e45-default-rtdb.europe-west1.firebasedatabase.app/${value}.json`;
-    return this.httpClient.get(data);
+    const data: string =  `${this.url}${value}.json`;
+    return this.http.get(data);
   }
 
   public fetchData<T>(value: string): Observable<T[]> {
@@ -22,8 +24,8 @@ export class ReceivingDataService {
     );
   }
 
-  public sendData(data: any) {
-    const url: string = 'https://online-clothing-store-34e45-default-rtdb.europe-west1.firebasedatabase.app/';
-    return this.httpClient.post(url, data);
+  // Відправка даних
+  public sendData(key:string, data: object) {
+    return this.http.put(`${this.url}${key}.json`, data)
   }
 }

@@ -26,6 +26,7 @@ export class ProductInfoComponent  implements OnInit {
     '56-58': false,
   };
   public isSale: boolean = true;
+  public counter: number = 1;
 
   constructor(
     private productService: ProductService,
@@ -50,22 +51,9 @@ export class ProductInfoComponent  implements OnInit {
   // Створює масив рядків довжиною n, де кожен елемент масиву є порожнім рядком. Потым пыдставляє ★
   public generateArray = (n: number): string[] => Array(n);
 
-
-  public getItemColor(value: boolean): string {
-    return value ? "#c6f069" : "#d3d3d3";
-  }
-
-  public getCursor(value: boolean): string {
-    return value ? "pointer" : "no-drop";
-  }
-
-
   public productCounter(value: string) {
     this.counter = this.counterPipe.transform(value, this.counter);
   }
-
-
-  public counter: number = 1;
 
   public buyProduct(): IProductBuy {
 

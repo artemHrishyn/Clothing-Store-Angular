@@ -7,82 +7,8 @@
     <p class="info__sign-out" (click)="goToUrl('')">Вихід</p>
   </aside>
   <article>
-    <button>Add</button>
-
-    <ul class="filter">
-      <li>Brand</li>
-      <li>Type</li>
-      <li>Title</li>
-    </ul>
-
-    <form>
-      <label for="brand">Бренд товару:</label>
-      <input type="text" id="brand" #input1 (keyup)="show(input1.value)" />
-    </form>
-
-    <ul class="list-products">
-      <li *ngFor="let item of items">
-        <button>Edit</button>
-        <div class="list-products__brand">
-          <h1>Бренд:</h1>
-          <img [src]="item.brand.image" alt="" />
-          <p>Назва: {{ item.brand.title }}</p>
-        </div>
-        <div class="list-products__color">
-          <h1>Колір:</h1>
-          <ul>
-            <li
-              *ngFor="let color of item.color"
-              [style.background-color]="color"
-            ></li>
-          </ul>
-        </div>
-        <div class="list-products__gender">
-          <h1>Стать:</h1>
-          <ul>
-            <li *ngFor="let gender of item.gender">{{ gender }}</li>
-          </ul>
-        </div>
-        <p>id: {{ item.id }}</p>
-        <div class="list-products__image">
-          <h1>Image:</h1>
-          <ul>
-            <li *ngFor="let image of item.image">
-              <img [src]="image" alt="" />
-            </li>
-          </ul>
-        </div>
-        <p>Ціна: {{ item.price }}</p>
-        <div>
-          Кількість товару:
-          <ul>
-            <li>
-              <p>Жіночий одяг: <span>500</span></p>
-              <p>Чоловічий одяг: <span>1000</span></p>
-            </li>
-          </ul>
-        </div>
-        <p>
-          rating: <span>{{ item.rating }}</span>
-        </p>
-        <p>
-          sale: <span> {{ item.sale }}</span>
-        </p>
-        <div>
-          size:
-          <ul>
-            <li>
-              44: false 46: false 48: true 50-52: true 54: false 56-58: true
-            </li>
-          </ul>
-        </div>
-        <p>
-          title: <span>{{ item.title }}</span>
-        </p>
-        <p>
-          type: <span>{{ item.type }}</span>
-        </p>
-      </li>
-    </ul>
+    <button (click)="addProduct()">{{ add }}</button>
+    <app-new-product *ngIf="isAdd"></app-new-product>
+    <app-all-product-admin *ngIf="!isAdd"></app-all-product-admin>
   </article>
 </div>

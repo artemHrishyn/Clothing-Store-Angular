@@ -45,8 +45,8 @@
       <ul>
         <li
           *ngFor="let key of getSizeKeys()"
-          [style.background-color]="getItemColor(sizeProduct[key])"
-          [style.cursor]="getCursor(sizeProduct[key])"
+          [style.background-color]="sizeProduct[key] ? '#c6f069' : '#d3d3d3'"
+          [style.cursor]="sizeProduct[key] ? 'pointer' : 'no-drop'"
         >
           {{ key }}
         </li>

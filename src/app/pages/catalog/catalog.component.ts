@@ -19,7 +19,7 @@ export class CatalogComponent {
   private isTShirts: boolean = false;
 
   public showArrayProducts: ShablonDetailsProduct[] = [];
-  private reservArrayProducts: ShablonDetailsProduct[] = [];
+  public reservArrayProducts: ShablonDetailsProduct[] = [];
   private mainProducts: ShablonDetailsProduct[] = [];
   public category: string = "";
 
@@ -39,21 +39,8 @@ export class CatalogComponent {
     });
   }
 
-  changePage(value: number) {
-    switch (value) {
-      case 1:
-        this.showArrayProducts = this.reservArrayProducts.slice(0, 10);
-      break;
-      case 2:
-        this.showArrayProducts = this.reservArrayProducts.slice(10,20);
-      break;
-      case 3:
-        this.showArrayProducts = this.reservArrayProducts.slice(20, this.reservArrayProducts.length);
-      break;
-      default:
-        this.showArrayProducts = this.reservArrayProducts.slice(0, 10);
-        break;
-    }
+  changePage(value1: number, value2: number) {
+        this.showArrayProducts = this.reservArrayProducts.slice(value1, value2);
   }
 
   // Вивод товару згідно філтру

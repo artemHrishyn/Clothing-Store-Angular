@@ -1,65 +1,51 @@
-  import { Component } from '@angular/core';
-  import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { GoToUrlService } from 'src/app/service/goToUrl/go-to-url.service';
 
-  @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrls: [
-      './header.component.scss',
-      './media.scss',
-    ]
-  })
-  export class HeaderComponent {
+@Component({
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: [
+    './header.component.scss',
+    './media.scss',
+  ]
+})
+export class HeaderComponent implements OnInit {
 
-      constructor(
-      private routing: Router,
-    ) {}
+  constructor(
+    private goToUrlService: GoToUrlService
+  ) {}
+  ngOnInit(): void {
+  }
 
-    public isShowMenu: boolean = false;
-    public isLogin: boolean = false;
+  public isShowMenu: boolean = false;
+  public isLogin: boolean = false;
 
-    public userImg: string = "assets/image/icon/user.svg";
+  public userImg: string = "assets/image/icon/user.svg";
 
-    public showMiniMenu():void {
-      this.isShowMenu = !this.isShowMenu;
+  public showMiniMenu():void {
+    this.isShowMenu = !this.isShowMenu;
+  }
+
+  public loginShow(): void {
+    if (this.userImg === 'assets/image/icon/user.svg')
+    {
+      this.isLogin = !this.isLogin;
     }
-
-    public loginShow(): void {
-      if (this.userImg === 'assets/image/icon/user.svg')
-      {
-        this.isLogin = !this.isLogin;
-      }
-    }
-
-    public goToUrl(value: string) {
-      this.isLogin = false;
-      this.routing.navigate([value]);
-    }
-
-    public loginRequest() {
-      this.goToUrl('personal-area');
-    }
-
-    private validatePassword(password: string): boolean {
-      const passwordRegex = /^(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?])(?=.*[A-Z])(?=.*[0-9]).{8,}$/;
-      return passwordRegex.test(password);
+    else
+    {
+      this.goToUrlService.goToUrl('personal-area');
     }
   }
 
-  // const passwordValid: boolean = this.validatePassword(this.password);
-  // console.log(passwordValid);
+  public goToUrl(value: string) {
+    this.isLogin = false;
+    this.goToUrlService.goToUrl(value);
+  }
 
-
-  // if (this.login === "admin" && this.password === "admin")
-  // {
-  //   this.userImg = this.isLogin
-  //     ? 'https://assets.stickpng.com/images/585e4bcdcb11b227491c3396.png'
-  //     : 'assets/image/icon/user.svg';
-
-  //   this.goToUrl('personal-area');
-  // }
-  // else {
-  //   alert("Були введен логін та пошта не вірно, або вони порожні");
-  //   this.login = '';
-  //   this.password = ''
-  // }
+  public returnLogin() {
+    this.isLogin = false;
+  }
+  public returnImage() {
+    this.userImg = 'https://cdn-icons-png.flaticon.com/512/272/272456.png';
+  }
+}

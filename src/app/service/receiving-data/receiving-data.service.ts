@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
+import { IDataProduct } from '../interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class ReceivingDataService {
 
   constructor(private http: HttpClient) { }
 
-  private getData(value: string) {
+  private getData(value?: string) {
     const data: string =  `${this.url}${value}.json`;
     return this.http.get(data);
   }
@@ -25,7 +26,9 @@ export class ReceivingDataService {
   }
 
   // Відправка даних
-  public sendData(key:string, data: object) {
-    return this.http.put(`${this.url}${key}.json`, data)
+  public sendData(value: string, data: IDataProduct) {
+    return this.http.put(`${this.url}${value}.json`, data).subscribe(elem => {
+      console.log(elem);
+    });
   }
 }

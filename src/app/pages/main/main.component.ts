@@ -3,6 +3,7 @@ import { GoToUrlService } from 'src/app/service/goToUrl/go-to-url.service';
 import { ShablonDetailsProduct } from 'src/app/service/instance.class';
 import { IReviews } from 'src/app/service/interface';
 import { ProcessingDataService } from 'src/app/service/processing-data/processing-data.service';
+import { ReceivingDataService } from 'src/app/service/receiving-data/receiving-data.service';
 
 @Component({
   selector: 'app-main',
@@ -25,6 +26,7 @@ export class MainComponent implements OnInit{
 
   constructor(
     private processingDataService: ProcessingDataService,
+    private receivingDataService: ReceivingDataService,
     private goToUrlService : GoToUrlService
   ) { }
 
@@ -32,17 +34,14 @@ export class MainComponent implements OnInit{
     this.processingDataService.getTopProduct().subscribe((data: ShablonDetailsProduct[]) => {
       this.productTop = data;
     });
-
-    this.processingDataService.getAllProduct().subscribe((data:ShablonDetailsProduct[]) => {
+    this.processingDataService.getAllProduct().subscribe((data: ShablonDetailsProduct[]) => {
       this.productAll = data;
     });
-
     this.processingDataService.returnBrandsArray().subscribe(data => {
       this.imgBrands = data.uniqueImage;
       this.totalBrands = data.brandsLength;
       this.totalProduct = data.totalProduct;
     });
-
     this.processingDataService.getReviews().subscribe(data => {
       this.reviews = data;
     });

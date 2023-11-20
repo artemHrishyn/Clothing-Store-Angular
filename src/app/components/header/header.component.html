@@ -26,7 +26,12 @@
         alt="shop"
         (click)="goToUrl('shopping-list')"
       />
-      <img src="{{ userImg }}" alt="user" (click)="loginShow()" />
+      <img
+        src="{{ userImg }}"
+        alt="user"
+        (click)="loginShow()"
+        (returnImgLogin)="returnImage()"
+      />
     </div>
   </nav>
 
@@ -42,5 +47,9 @@
     </li>
   </ul>
 
-  <app-login-form *ngIf="isLogin"></app-login-form>
+  <app-login-form
+    *ngIf="isLogin"
+    [isLogin]="isLogin"
+    (closeLogin)="returnLogin()"
+  ></app-login-form>
 </header>

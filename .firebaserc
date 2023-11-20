@@ -1,7 +1,6 @@
 {
   "projects": {
-    "default": "online-clothing-store-34e45",
-    "gencer": "online-clothing-store-34e45"
+    "default": "online-clothing-store-34e45"
   },
   "targets": {
     "online-clothing-store-34e45": {

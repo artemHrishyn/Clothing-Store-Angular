@@ -11,6 +11,7 @@ import { ReceivingDataService } from './service/receiving-data/receiving-data.se
 import { ProductService } from './service/product/product.service';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getAnalytics, provideAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 import { PagesModule } from './pages/pages.module';
 import { HeaderModule } from './components/header/header.module';
 import { GoToUrlService } from './service/goToUrl/go-to-url.service';
@@ -27,6 +28,7 @@ import { PipeModule } from './pipe/pipe.module';
     provideDatabase(() => getDatabase()),
     provideAuth(() => getAuth()),
     provideAnalytics(() => getAnalytics()),
+    provideStorage(() => getStorage()),
     BrowserModule,
     AppRoutingModule,
     PagesModule,

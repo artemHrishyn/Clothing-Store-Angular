@@ -9,18 +9,22 @@ export interface IDataProduct {
     title: string
   },
   color: string[],
-  gender: string[],
   id: number,
   image: string[],
   price: number,
   quantity: {
-     female: number;
+     female: number,
      male: number
   },
   rating: number,
   sale: number,
   size: {
-    [key: string]: boolean
+        '44': boolean,
+        '46': boolean,
+        '48': boolean,
+        '50-52': boolean,
+        '54': boolean,
+        '56-58': boolean
   },
   title: string,
   type: string

@@ -1,0 +1,81 @@
+<h1>New Product</h1>
+
+<P
+  >Brands: img:
+  <input
+    type="text"
+    placeholder="brands img url"
+    [(ngModel)]="item.brand.image"
+  />
+  Title:
+  <input
+    type="text"
+    placeholder="brands title"
+    [(ngModel)]="item.brand.title"
+  />
+</P>
+
+<p>
+  Колір:
+  <input type="color" name="" id="" [(ngModel)]="item.color" />
+</p>
+<p>
+  id:
+  <input type="number" placeholder="ID" [(ngModel)]="item.id" />
+</p>
+
+<p>
+  Image:
+  <input type="text" placeholder="картинка url" [(ngModel)]="item.image" />
+</p>
+
+<p>Ціна: <input type="number" [(ngModel)]="item.price" /></p>
+<p>
+  Кількість: Жіночий одяг:
+  <input type="number" [(ngModel)]="item.quantity.female" /> Чоловічий одяг:
+  <input type="number" [(ngModel)]="item.quantity.male" />
+</p>
+
+<p>
+  Рейтинг:
+  <input
+    type="number"
+    placeholder="rating"
+    #rating
+    (change)="onOptionChangeRaiting(+rating.value)"
+  />
+</p>
+
+<p>
+  Знижка:
+  <input type="number" placeholder="Sale" [(ngModel)]="item.sale" />
+</p>
+
+<p>
+  Розмір: 44:
+  <input type="checkbox" name="" id="" [(ngModel)]="item.size['44']" />
+  46:
+  <input type="checkbox" name="" id="" [(ngModel)]="item.size['46']" />
+  48:
+  <input type="checkbox" name="" id="" [(ngModel)]="item.size['48']" />
+  50-52:
+  <input type="checkbox" name="" id="" [(ngModel)]="item.size['50-52']" />
+  54:
+  <input type="checkbox" name="" id="" [(ngModel)]="item.size['54']" />
+  56-58:
+  <input type="checkbox" name="" id="" [(ngModel)]="item.size['56-58']" />
+</p>
+
+<p>
+  Title:
+  <input type="text" placeholder="title" [(ngModel)]="item.title" />
+</p>
+
+<p>
+  Type:
+  <select [(ngModel)]="typeOption" (change)="onOptionChangeType($event)">
+    <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+  </select>
+</p>
+
+<button (click)="sendData()">Set data</button>

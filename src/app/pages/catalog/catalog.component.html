@@ -29,13 +29,17 @@
     <nav>
       <ul class="pagination pagination-lg">
         <li class="page-item">
-          <a class="page-link" (click)="changePage(1)">1</a>
+          <a class="page-link" (click)="changePage(0, 10)">1</a>
         </li>
         <li class="page-item">
-          <a class="page-link" (click)="changePage(2)">2</a>
+          <a class="page-link" (click)="changePage(10, 20)">2</a>
         </li>
         <li class="page-item">
-          <a class="page-link" (click)="changePage(3)">3</a>
+          <a
+            class="page-link"
+            (click)="changePage(20, reservArrayProducts.length)"
+            >3</a
+          >
         </li>
       </ul>
     </nav>
@@ -54,13 +58,17 @@
     <nav>
       <ul class="pagination pagination-lg">
         <li class="page-item">
-          <a class="page-link" (click)="changePage(1)">1</a>
+          <a class="page-link" (click)="changePage(0, 10)">1</a>
         </li>
         <li class="page-item">
-          <a class="page-link" (click)="changePage(2)">2</a>
+          <a class="page-link" (click)="changePage(10, 20)">2</a>
         </li>
         <li class="page-item">
-          <a class="page-link" (click)="changePage(3)">3</a>
+          <a
+            class="page-link"
+            (click)="changePage(20, reservArrayProducts.length)"
+            >3</a
+          >
         </li>
       </ul>
     </nav>

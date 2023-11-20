@@ -55,7 +55,14 @@ export class AllProductData implements IDataProduct{
   };
   rating: number;
   sale: number;
-  size: { [key: string]: boolean };
+  size: {
+        '44': boolean,
+        '46': boolean,
+        '48': boolean,
+        '50-52': boolean,
+        '54': boolean,
+        '56-58': boolean
+   };
   title: string;
   type: string;
   constructor(
@@ -74,7 +81,14 @@ export class AllProductData implements IDataProduct{
   },
     rating: number,
     sale: number,
-    size: { [key: string]: boolean; },
+    size: {
+        '44': boolean,
+        '46': boolean,
+        '48': boolean,
+        '50-52': boolean,
+        '54': boolean,
+        '56-58': boolean
+     },
     title: string,
     type: string)
   {

@@ -23,7 +23,6 @@ export class BuyItemComponent {
     private counterPipe: CounterPipe
   ) { }
 
-
   ngOnInit() {
     this.sumItem = this.itemProduct.price * this.itemProduct.counter;
     setTimeout(() => this.setCounter(this.itemProduct.title ,this.sumItem), 1);

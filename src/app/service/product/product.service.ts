@@ -26,6 +26,7 @@ export class ProductService {
 
     return this.boughtProducts;
   }
+
   Delateitem<T>(value: T, data: T[]): T[] {
     return data.filter((element) => element !== value);
   }

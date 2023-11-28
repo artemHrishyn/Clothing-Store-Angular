@@ -1,9 +1,4 @@
-import {
-  IDataProduct,
-  IProductBuy,
-  IProductBuyNew,
-  IProductDetails
-} from "./interface";
+import { IDataProduct, IProductBuy, IProductBuyNew, IProductDetails } from "./interface";
 
 export class ShablonDetailsProduct implements IProductDetails{
   color: string[] = [];
@@ -12,8 +7,13 @@ export class ShablonDetailsProduct implements IProductDetails{
   rating: number = 0;
   sale: number = 0;
   size: {
-    [key: string]: boolean;
-  } = {};
+    '44': boolean;
+    '46': boolean;
+    '48': boolean;
+    '50-52': boolean;
+    '54': boolean;
+    '56-58': boolean;
+  };
   title: string = "";
   type: string = "";
   constructor(
@@ -23,7 +23,12 @@ export class ShablonDetailsProduct implements IProductDetails{
     rating: number,
     sale: number,
     size: {
-      [key: string]: boolean;
+        '44': boolean,
+        '46': boolean,
+        '48': boolean,
+        '50-52': boolean,
+        '54': boolean,
+        '56-58': boolean
     },
     title: string,
     type: string
@@ -40,19 +45,14 @@ export class ShablonDetailsProduct implements IProductDetails{
   }
 }
 export class AllProductData implements IDataProduct{
-  brand: {
-    image: string,
-    title: string
-  };
+  brandImg: string;
+  brandTitle: string;
   color: string[];
   gender: string[];
-  id: number;
   image: string[];
   price: number;
-  quantity: {
-    female: number,
-    male: number
-  };
+  female: number;
+  male: number;
   rating: number;
   sale: number;
   size: {
@@ -65,20 +65,16 @@ export class AllProductData implements IDataProduct{
    };
   title: string;
   type: string;
+
   constructor(
-    brand: {
-    image: string,
-    title: string
-  },
+    brandImg: string,
+    brandTitle: string,
     color: string[],
     gender: string[],
-    id: number,
     image: string[],
     price: number,
-    quantity: {
     female: number,
-    male: number
-  },
+    male: number,
     rating: number,
     sale: number,
     size: {
@@ -92,13 +88,14 @@ export class AllProductData implements IDataProduct{
     title: string,
     type: string)
   {
-    this.brand = brand;
+    this.brandImg = brandImg;
+    this.brandTitle = brandTitle;
     this.color = color;
     this.gender = gender;
-    this.id = id;
     this.image = image;
     this.price = price;
-    this.quantity = quantity;
+    this.female = female;
+    this.male = male;
     this.rating = rating;
     this.sale = sale;
     this.size = size;

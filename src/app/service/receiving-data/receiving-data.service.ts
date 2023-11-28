@@ -13,7 +13,7 @@ export class ReceivingDataService {
   constructor(private http: HttpClient) { }
 
   private getData(value?: string) {
-    const data: string =  `${this.url}${value}.json`;
+    const data: string = `${this.url}${value}.json`;
     return this.http.get(data);
   }
 
@@ -25,9 +25,12 @@ export class ReceivingDataService {
     );
   }
 
+  private data: IDataProduct[] = new Array<IDataProduct>;
   // Відправка даних
-  public sendData(value: string, data: IDataProduct) {
-    return this.http.put(`${this.url}${value}.json`, data).subscribe(elem => {
+  public sendData(value: string, dataValue: IDataProduct) {
+
+    this.data.push(dataValue);
+    return this.http.post(`${this.url}clothes/${value}.json`, dataValue).subscribe(elem => {
       console.log(elem);
     });
   }

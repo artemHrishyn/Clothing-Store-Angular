@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IReviews } from 'src/app/service/interface';
 
 @Component({
@@ -6,6 +6,10 @@ import { IReviews } from 'src/app/service/interface';
   templateUrl: './reviews.component.html',
   styleUrls: ['./reviews.component.scss']
 })
-export class ReviewsComponent {
+export class ReviewsComponent implements OnInit {
   @Input() itemReviews: IReviews = {} as IReviews;
+
+  ngOnInit(): void {
+    console.log(this.itemReviews);
+  }
 }

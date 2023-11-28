@@ -1,21 +1,18 @@
-export interface GlobalCategory{
-  shorts: IDataProduct[];
-  sneakers: IDataProduct[];
-  tshirt: IDataProduct[];
+export interface IGlobalCategory{
+
+  shorts:  { [key: string]: IDataProduct };
+  sneakers:  { [key: string]: IDataProduct };
+  tshirt:  { [key: string]: IDataProduct };
 }
+
 export interface IDataProduct {
-  brand: {
-    image: string,
-    title: string
-  },
+  brandImg: string,
+  brandTitle: string,
   color: string[],
-  id: number,
   image: string[],
   price: number,
-  quantity: {
-     female: number,
-     male: number
-  },
+  female: number,
+  male: number,
   rating: number,
   sale: number,
   size: {
@@ -49,16 +46,18 @@ export interface IProductBuy extends IProductBuyNew{
   sale: number
   counter: number
 }
+
 export interface IProductBuyNew {
   image: string,
   title: string,
   price: number,
   counter: number
 }
+
 export interface IReviews {
   date: string,
   image: string,
-  lastname: string,
+  surname: string,
   name: string,
   rating: number,
   text: string

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
-import { LoginFormModule } from '../login-form/login-form.module';
+import { LoginFormModule } from '../../login-form/login-form.module';
 
 @NgModule({
   declarations: [
@@ -12,8 +12,8 @@ import { LoginFormModule } from '../login-form/login-form.module';
   imports: [
     CommonModule,
     NgbModule,
-    RouterModule,
-    LoginFormModule
+    LoginFormModule,
+    RouterModule
   ],
   exports: [ HeaderComponent ]
 })

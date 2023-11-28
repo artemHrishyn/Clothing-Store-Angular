@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { ReceivingDataService } from '../receiving-data/receiving-data.service';
 import { Observable, map } from 'rxjs';
-import { GlobalCategory, IDataProduct, IReviews } from '../interface';
+import { IGlobalCategory, IDataProduct, IReviews } from '../interface';
 import { ShablonDetailsProduct } from '../instance.class';
 import { MixElementsPipe } from 'src/app/pipe/mix-elements/mix-elements.pipe';
 import { ClassProductService } from '../product/class-product/class-product.service';
+import { ReceivingDataService } from '../receiving-data/receiving-data.service';
 enum SiteCategory {
   clothes = 'clothes',
   reviews = 'reviews'
@@ -15,16 +15,10 @@ enum ProductCategory {
   sneakers = 'sneakers',
   tshirt = 'tshirt'
 };
-interface BrandsInfo{
-  image: string;
-  title: string;
-}
-
 @Injectable({
   providedIn: 'root'
 })
 export class ProcessingDataService {
-
 
   constructor(
     private receivingDataService: ReceivingDataService,
@@ -36,12 +30,47 @@ export class ProcessingDataService {
   // Обробка даних та повертає спільний масив усіх категорії продуктів
   public getData(value: string): Observable<IDataProduct[]> {
     return this.receivingDataService.fetchData(value).pipe(
-      map((data: Object) => {
-        const globalCategory = data as GlobalCategory;
+      map((data: Object | null) => {
+         if (data === null) {
+        return [];
+      }
+
+        const globalCategory = data as IGlobalCategory;
         let allProduct: IDataProduct[] = [];
-        allProduct.push(...globalCategory[ProductCategory.shorts]);
-        allProduct.push(...globalCategory[ProductCategory.sneakers]);
-        allProduct.push(...globalCategory[ProductCategory.tshirt]);
+
+        const shorts = globalCategory[ProductCategory.shorts];
+
+        if (shorts) {
+
+          Object.keys(shorts).forEach((key: string) => {
+            allProduct.push(shorts[key]);
+          });
+        }
+        else {
+          console.error(`Нема даних категоріїж `,ProductCategory.shorts);
+        }
+
+        const sneakers = globalCategory[ProductCategory.sneakers];
+        if (sneakers) {
+          Object.keys(sneakers).forEach((key: string) => {
+            allProduct.push(sneakers[key]);
+          });
+        }
+        else {
+          console.error(`Нема даних категоріїж `,ProductCategory.sneakers);
+        }
+
+
+        const tshirt = globalCategory[ProductCategory.tshirt];
+        if (tshirt) {
+          Object.keys(tshirt).forEach((key: string) => {
+            allProduct.push(tshirt[key]);
+          });
+        }
+        else {
+          console.error(`Нема даних категоріїж `,ProductCategory.tshirt);
+        }
+
         return allProduct;
       })
     );
@@ -59,20 +88,14 @@ export class ProcessingDataService {
         const brandArray: string[] = [];
         const imageArray: string[] = [];
 
+        const length: number = data.length;
         data.forEach((elem: IDataProduct) => {
-          const brand: BrandsInfo = {
-            image: elem.brand['image'],
-            title: elem.brand['title'],
-          };
-          imageArray.push(brand.image);
-          brandArray.push(brand.title);
+          imageArray.push(elem.brandImg);
+          brandArray.push(elem.brandTitle);
         });
 
-        const length: number = data.length;
-
-        const uniqueBrands: string[] =  Array.from(new Set(brandArray));
+        const uniqueBrands: string[] = Array.from(new Set(brandArray));
         const uniqueImage: string[] = Array.from(new Set(imageArray));
-
         const randomImage: string[] = this.mixElementsPipe.transform(uniqueImage);
 
         return {
@@ -104,14 +127,14 @@ export class ProcessingDataService {
   public getAllProduct(): Observable<ShablonDetailsProduct[]> {
     return this.getData(SiteCategory.clothes).pipe(
       map((data: IDataProduct[]) => {
+
         const allProduct: ShablonDetailsProduct[] = [];
 
         data.forEach((elem: IDataProduct) => {
-          allProduct.push( this.classProductService.returnClassDetailsProduct(elem));
+          allProduct.push(elem);
         });
-
         const mixedBrands: ShablonDetailsProduct[] = this.mixElementsPipe.transform(allProduct);
-        const newValue: ShablonDetailsProduct[] =  mixedBrands;
+        const newValue: ShablonDetailsProduct[] = mixedBrands;
         return newValue;
       })
     );
@@ -136,24 +159,34 @@ export class ProcessingDataService {
   private getCatalogAllProducts(value: string): Observable<IDataProduct[]> {
     return  this.receivingDataService.fetchData(SiteCategory.clothes).pipe(
       map((data: Object) => {
-        const globalCategory = data as GlobalCategory;
+        const globalCategory = data as IGlobalCategory;
         let getShortsData: IDataProduct[] = [];
 
         switch (value) {
           case'shorts':
-            getShortsData.push(...globalCategory[ProductCategory.shorts]);
+            const shorts = globalCategory[ProductCategory.shorts];
+            Object.keys(shorts).forEach((key: string) => {
+              getShortsData.push(shorts[key]);
+            });
             break;
           case 'tshirt':
-            getShortsData.push(...globalCategory[ProductCategory.tshirt]);
+            const tshirt = globalCategory[ProductCategory.tshirt];
+            Object.keys(tshirt).forEach((key: string) => {
+              getShortsData.push(tshirt[key]);
+            });
             break;
           case 'sneakers':
-            getShortsData.push(...globalCategory[ProductCategory.sneakers]);
+            const sneakers = globalCategory[ProductCategory.sneakers];
+            Object.keys(sneakers).forEach((key: string) => {
+              getShortsData.push(sneakers[key]);
+            });
             break;
 
           default:
             console.log('Не збігаєтся з жодної категорії. Доступні категорії: "shorts" | "sneakers" | "tshirt" ');
             break;
         }
+
         return getShortsData;
       })
     );
@@ -163,7 +196,6 @@ export class ProcessingDataService {
     return this.getCatalogAllProducts(value).pipe(
       map((data: IDataProduct[]) => {
         const allProductShorts: ShablonDetailsProduct[] = [];
-
         data.forEach((elem: IDataProduct) => {
         allProductShorts.push(this.classProductService.returnClassDetailsProduct(elem));
       });

@@ -34,7 +34,7 @@ export class CatalogComponent {
   ngOnInit(): void {
     this.dataProcessingService.getAllProduct().subscribe((data: ShablonDetailsProduct[]) => {
       this.reservArrayProducts = data
-      this.showArrayProducts = this.reservArrayProducts.slice(0,10);
+      this.showArrayProducts = this.reservArrayProducts.slice(0, 10);
       this.mainProducts = data;
     });
   }

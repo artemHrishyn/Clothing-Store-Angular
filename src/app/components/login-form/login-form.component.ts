@@ -9,8 +9,10 @@ import { GoToUrlService } from 'src/app/service/goToUrl/go-to-url.service';
 export class LoginFormComponent {
   public login: string = "";
   public password: string = "";
+
   @Input() isLogin: boolean = false;
   @Output() closeLogin: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   @Input() imgLogin: string = '';
   @Output() returnImgLogin: EventEmitter<string> = new EventEmitter<string>();
 

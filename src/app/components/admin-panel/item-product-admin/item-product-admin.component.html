@@ -1,0 +1,51 @@
+<button>Edit</button>
+<div class="list-products__brand">
+  <h1>Бренд:</h1>
+  <img [src]="item.brandImg" alt="" />
+</div>
+<div class="list-products__color">
+  <h1>Колір:</h1>
+  <ul>
+    <li *ngFor="let color of item.color" [style.background-color]="color"></li>
+  </ul>
+</div>
+<div class="list-products__image">
+  <h1>Image:</h1>
+  <ul>
+    <li *ngFor="let image of item.image">
+      <img [src]="image" alt="" />
+    </li>
+  </ul>
+</div>
+<p>Ціна: {{ item.price }}</p>
+<div>
+  Кількість товару:
+  <ul>
+    <li>
+      <p>
+        Жіночий одяг: <span>{{ item.female }}</span>
+      </p>
+      <p>
+        Чоловічий одяг: <span>{{ item.male }}</span>
+      </p>
+    </li>
+  </ul>
+</div>
+<p>
+  rating: <span>{{ item.rating }}</span>
+</p>
+<p>
+  sale: <span> {{ item.sale }}</span>
+</p>
+<div>
+  size:
+  <ul>
+    <li>44: false 46: false 48: true 50-52: true 54: false 56-58: true</li>
+  </ul>
+</div>
+<p>
+  title: <span>{{ item.title }}</span>
+</p>
+<p>
+  type: <span>{{ item.type }}</span>
+</p>

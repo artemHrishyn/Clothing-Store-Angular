@@ -9,6 +9,7 @@ import { ProcessingDataService } from 'src/app/service/processing-data/processin
 })
 export class AllProductAdminComponent implements OnInit {
 
+  public images: string[] = [];
   public items: IDataProduct[] = [];
   public itemRezerv: IDataProduct[] = [];
 
@@ -16,15 +17,17 @@ export class AllProductAdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.processingDataService.getData('clothes').subscribe((data: IDataProduct[]) => {
-      this.itemRezerv = data;
-      this.items = this.itemRezerv;
+      if (data) {
+        this.itemRezerv = data;
+        this.items = this.itemRezerv;
+      }
     });
   }
 
   public show(value: string) {
     this.items = [];
     if (value) {
-      this.items = this.itemRezerv.filter(elem => elem.brand.title.startsWith(value));
+      this.items = this.itemRezerv.filter(elem => elem.brandTitle.startsWith(value));
     } else {
       this.items = this.itemRezerv;
     }

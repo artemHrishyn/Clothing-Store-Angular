@@ -1,6 +1,7 @@
 <img [src]="itemReviews.image" alt="user Foto" />
-<p>{{ itemReviews.date }}</p>
-<p>{{ itemReviews.lastname }}</p>
-<p>{{ itemReviews.name }}</p>
+<p class="date">{{ itemReviews.date }}</p>
+<p>
+  <span>{{ itemReviews.surname }}</span> {{ itemReviews.name }}
+</p>
 <p>{{ itemReviews.rating }}</p>
 <p>{{ itemReviews.text }}</p>

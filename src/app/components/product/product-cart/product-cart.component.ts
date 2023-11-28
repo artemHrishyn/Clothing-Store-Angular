@@ -28,7 +28,9 @@ export class ProductCartComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.image = this.itemProduct.image[0];
+    if (this.itemProduct.image && this.itemProduct.image.length > 0) {
+      this.image = this.itemProduct.image[0];
+    }
     this.price = (this.itemProduct.sale === 0) ? this.itemProduct.price : this.itemProduct.sale;
   }
 

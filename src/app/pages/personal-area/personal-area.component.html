@@ -7,8 +7,12 @@
     <p class="info__sign-out" (click)="goToUrl('')">Вихід</p>
   </aside>
   <article>
-    <button (click)="addProduct()">{{ add }}</button>
-    <app-new-product *ngIf="isAdd"></app-new-product>
+    <button class="btn btn-info" (click)="addProduct()">{{ add }}</button>
     <app-all-product-admin *ngIf="!isAdd"></app-all-product-admin>
+    <app-new-product
+      *ngIf="isAdd"
+      [show]="isAdd"
+      (close)="close($event)"
+    ></app-new-product>
   </article>
 </div>

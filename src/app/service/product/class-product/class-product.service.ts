@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ProductBuy, ProductBuyNew, ShablonDetailsProduct } from '../../instance.class';
-import { IDataProduct, IProductBuy, IProductBuyNew } from '../../interface';
+import { IDataProduct, IProductBuyNew } from '../../interface';
 
 @Injectable({
   providedIn: 'root'

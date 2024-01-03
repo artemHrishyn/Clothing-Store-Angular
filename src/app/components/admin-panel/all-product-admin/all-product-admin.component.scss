@@ -1,14 +1,18 @@
 .list-products {
   list-style: none;
   display: flex;
+  gap: 25px;
   flex-wrap: wrap;
 
   &>li {
-    border: 1px solid #000;
-    max-width: 510px;
-    width: 100%;
-    margin-right: 20px;
+    // margin: 0 20px 20px 0;
     padding: 10px;
+    max-width: 440px;
+    width: 100%;
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: 13px 9px 5px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 13px 9px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 13px 9px 5px 0px rgba(0, 0, 0, 0.75);
   }
 }
 

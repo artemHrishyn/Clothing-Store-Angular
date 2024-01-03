@@ -10,6 +10,5 @@ export class ReviewsComponent implements OnInit {
   @Input() itemReviews: IReviews = {} as IReviews;
 
   ngOnInit(): void {
-    console.log(this.itemReviews);
   }
 }

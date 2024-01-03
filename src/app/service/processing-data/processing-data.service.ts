@@ -31,6 +31,8 @@ export class ProcessingDataService {
   public getData(value: string): Observable<IDataProduct[]> {
     return this.receivingDataService.fetchData(value).pipe(
       map((data: Object | null) => {
+        // console.log(data);
+        
          if (data === null) {
         return [];
       }
@@ -39,6 +41,8 @@ export class ProcessingDataService {
         let allProduct: IDataProduct[] = [];
 
         const shorts = globalCategory[ProductCategory.shorts];
+        console.log(shorts);
+        
 
         if (shorts) {
 

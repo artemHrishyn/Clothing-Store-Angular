@@ -2,6 +2,16 @@
 $colorBlack: #000;
 $colorWhite: #fff;
 
+:host{
+  position: fixed;
+  top: 20%;
+  right: 30%;
+  z-index: 1;
+  padding: 4rem 10rem;
+  background-color: #81c1eb;
+  box-shadow: 14px 14px 64px 3px rgba(0, 0, 0, 0.53);
+}
+
 form {
   position: relative;
   text-align: center;
@@ -26,7 +36,7 @@ form {
     justify-content: space-between;
     padding: 5px 0;
 
-    p {
+    h4 {
       margin: 1rem 0;
       padding-right: 1rem;
       font-size: 1.5rem;
@@ -38,6 +48,11 @@ form {
       padding: 5px 0 5px 13px;
       border-radius: 2rem;
     }
+  }
+
+  .user-data{
+    display: flex;
+    flex-direction: column;
   }
 
   button {

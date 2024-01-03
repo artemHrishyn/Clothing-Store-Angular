@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {  FormBuilder, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ReturnValuePipe } from 'src/app/pipe/return-value/return-value.pipe';
 import { ReceivingDataService } from 'src/app/service/receiving-data/receiving-data.service';
 export enum Type{
   Shorts = 'shorts',
@@ -27,8 +26,7 @@ export class NewProductComponent implements OnInit {
 
   constructor(
     private receivingDataService: ReceivingDataService,
-    private fb: FormBuilder,
-    private returnValuePipe: ReturnValuePipe
+    private fb: FormBuilder
   ) {
 
     this.color = new FormArray(

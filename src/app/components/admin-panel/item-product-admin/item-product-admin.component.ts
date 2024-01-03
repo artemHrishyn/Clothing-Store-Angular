@@ -8,7 +8,11 @@ import { IDataProduct } from 'src/app/service/interface';
 })
 export class ItemProductAdminComponent implements OnInit {
   @Input() item: IDataProduct = {} as IDataProduct;
+  public isSale: boolean = false;
+
+  constructor(){}
+
   ngOnInit(): void {
-    console.log(this.item);
+    this.isSale = this.item.sale === 0 ? this.isSale : !this.isSale;
   }
 }

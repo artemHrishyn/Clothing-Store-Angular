@@ -36,13 +36,12 @@
         this.productAll = data;
       });
       this.processingDataService.returnBrandsArray().subscribe(data => {
-        this.imgBrands = data.uniqueImage;
-        this.totalBrands = data.brandsLength;
-        this.totalProduct = data.totalProduct;
+          this.imgBrands = data.uniqueImage;
+          this.totalBrands = data.brandsLength;
+          this.totalProduct = data.totalProduct;
       });
       this.processingDataService.getReviews().subscribe(data => {
         this.reviews = data;
-
       });
     }
 

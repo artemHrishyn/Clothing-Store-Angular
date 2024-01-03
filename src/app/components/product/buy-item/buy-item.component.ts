@@ -1,14 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CounterPipe } from 'src/app/pipe/counter/counter.pipe';
-import { ProductBuyNew } from 'src/app/service/instance.class';
 import { IProductBuyNew } from 'src/app/service/interface';
-import { ClassProductService } from 'src/app/service/product/class-product/class-product.service';
 
 @Component({
   selector: 'app-buy-item',
   templateUrl: './buy-item.component.html',
-  styleUrls: ['./buy-item.component.scss'],
-  providers: [ ClassProductService ]
+  styleUrls: ['./buy-item.component.scss']
 })
 export class BuyItemComponent {
 

@@ -1,4 +1,5 @@
   import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { GoToUrlService } from 'src/app/service/goToUrl/go-to-url.service';
 
 @Component({
@@ -7,27 +8,39 @@ import { GoToUrlService } from 'src/app/service/goToUrl/go-to-url.service';
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent {
-  public login: string = "";
-  public password: string = "";
-
   @Input() isLogin: boolean = false;
   @Output() closeLogin: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @Input() imgLogin: string = '';
   @Output() returnImgLogin: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private goToUrlService: GoToUrlService) { }
+  public loginData: FormGroup;
 
-  public loginRequest() {
-    this.goToUrlService.goToUrl('personal-area');
-    this.closeLogin.emit(this.isLogin);
-
-    this.returnImgLogin.emit(this.imgLogin);
+  constructor(private goToUrlService: GoToUrlService) {
+    this.loginData = new FormGroup({
+      login: new FormControl("", Validators.required),
+      password: new FormControl("", Validators.required)
+    })
   }
-
   SignOut() {
     this.goToUrlService.goToUrl('main');
     this.isLogin = !this.isLogin
     this.closeLogin.emit(this.isLogin);
   }
+
+   onSubmit(form: FormGroup) {
+     if (form.valid) {
+       if (form.value.login == 'admin' && form.value.password == 'admin')
+       {
+         this.goToUrlService.goToUrl('personal-area');
+         this.imgLogin = 'https://mahesh.orgfree.com/img/log.png';
+         this.closeLogin.emit(this.isLogin);
+         this.returnImgLogin.emit(this.imgLogin);
+       }
+       else {
+         form.reset();
+       }
+    }
+  }
+
 }

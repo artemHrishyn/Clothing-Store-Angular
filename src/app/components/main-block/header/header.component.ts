@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit {
   public returnLogin() {
     this.isLogin = false;
   }
-  public returnImage() {
-    this.userImg = 'https://cdn-icons-png.flaticon.com/512/272/272456.png';
+  public returnImage(image: string) {
+    this.userImg = image;
   }
 }
